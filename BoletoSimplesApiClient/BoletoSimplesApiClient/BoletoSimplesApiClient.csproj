@@ -71,12 +71,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIs\Constants.cs" />
     <Compile Include="BoletoSimplesClient.cs" />
+    <Compile Include="IApiResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="APIs\BankBilletAccounts\RequestMessages\" />
+    <Folder Include="APIs\BankBilletAccounts\ResponseMessage\" />
+    <Folder Include="APIs\BankBillets\RequestMessages\" />
+    <Folder Include="APIs\BankBillets\ResponseMessage\" />
+    <Folder Include="APIs\CustomerSubscriptions\RequestMessages\" />
+    <Folder Include="APIs\CustomerSubscriptions\ResponseMessage\" />
+    <Folder Include="APIs\Customers\RequestMessages\" />
+    <Folder Include="APIs\Customers\ResponseMessage\" />
+    <Folder Include="APIs\Discharges\RequestMessages\" />
+    <Folder Include="APIs\Discharges\ResponseMessage\" />
+    <Folder Include="APIs\Events\RequestMessages\" />
+    <Folder Include="APIs\Events\ResponseMessage\" />
+    <Folder Include="APIs\Installments\RequestMessages\" />
+    <Folder Include="APIs\Installments\ResponseMessage\" />
+    <Folder Include="APIs\Remittances\RequestMessages\" />
+    <Folder Include="APIs\Remittances\ResponseMessage\" />
+    <Folder Include="APIs\WebhookDeliveries\RequestMessages\" />
+    <Folder Include="APIs\WebhookDeliveries\ResponseMessage\" />
+    <Folder Include="APIs\Webhooks\RequestMessages\" />
+    <Folder Include="APIs\Webhooks\ResponseMessage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
