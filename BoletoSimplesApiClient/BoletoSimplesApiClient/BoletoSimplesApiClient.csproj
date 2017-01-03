@@ -45,6 +45,7 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Net.Http, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.1.0\lib\net46\System.Net.Http.dll</HintPath>
       <Private>True</Private>
@@ -74,6 +75,7 @@
   <ItemGroup>
     <Compile Include="APIs\Constants.cs" />
     <Compile Include="BoletoSimplesClient.cs" />
+    <Compile Include="ClientConnection.cs" />
     <Compile Include="IApiResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -85,25 +87,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="APIs\BankBilletAccounts\RequestMessages\" />
-    <Folder Include="APIs\BankBilletAccounts\ResponseMessage\" />
+    <Folder Include="APIs\BankBilletAccounts\ResponseMessages\" />
     <Folder Include="APIs\BankBillets\RequestMessages\" />
-    <Folder Include="APIs\BankBillets\ResponseMessage\" />
+    <Folder Include="APIs\BankBillets\ResponseMessages\" />
     <Folder Include="APIs\CustomerSubscriptions\RequestMessages\" />
-    <Folder Include="APIs\CustomerSubscriptions\ResponseMessage\" />
+    <Folder Include="APIs\CustomerSubscriptions\ResponseMessages\" />
     <Folder Include="APIs\Customers\RequestMessages\" />
-    <Folder Include="APIs\Customers\ResponseMessage\" />
+    <Folder Include="APIs\Customers\ResponseMessages\" />
     <Folder Include="APIs\Discharges\RequestMessages\" />
-    <Folder Include="APIs\Discharges\ResponseMessage\" />
+    <Folder Include="APIs\Discharges\ResponseMessages\" />
     <Folder Include="APIs\Events\RequestMessages\" />
-    <Folder Include="APIs\Events\ResponseMessage\" />
+    <Folder Include="APIs\Events\ResponseMessages\" />
     <Folder Include="APIs\Installments\RequestMessages\" />
-    <Folder Include="APIs\Installments\ResponseMessage\" />
+    <Folder Include="APIs\Installments\ResponseMessages\" />
     <Folder Include="APIs\Remittances\RequestMessages\" />
-    <Folder Include="APIs\Remittances\ResponseMessage\" />
+    <Folder Include="APIs\Remittances\ResponseMessages\" />
     <Folder Include="APIs\WebhookDeliveries\RequestMessages\" />
-    <Folder Include="APIs\WebhookDeliveries\ResponseMessage\" />
+    <Folder Include="APIs\WebhookDeliveries\ResponseMessages\" />
     <Folder Include="APIs\Webhooks\RequestMessages\" />
-    <Folder Include="APIs\Webhooks\ResponseMessage\" />
+    <Folder Include="APIs\Webhooks\ResponseMessages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
