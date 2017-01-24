@@ -8,29 +8,29 @@ namespace BoletoSimplesApiClient.APIs.Auth.ResponseMessages
 {
     public class UserInfoResponseMessage
     {
-        public int id { get; set; }
-        public string login_url { get; set; }
-        public string email { get; set; }
-        public object account_type { get; set; }
-        public object first_name { get; set; }
-        public object middle_name { get; set; }
-        public object last_name { get; set; }
-        public object full_name { get; set; }
-        public object cpf { get; set; }
-        public object date_of_birth { get; set; }
-        public object mother_name { get; set; }
-        public object father_name { get; set; }
-        public int account_level { get; set; }
-        public object phone_number { get; set; }
-        public object address_street_name { get; set; }
-        public object address_number { get; set; }
-        public object address_complement { get; set; }
-        public object address_neighborhood { get; set; }
-        public object address_postal_code { get; set; }
-        public object address_city_name { get; set; }
-        public object address_state { get; set; }
-        public object business_name { get; set; }
-        public object business_cnpj { get; set; }
-        public object business_legal_name { get; set; }
+        public int Id { get; set; }
+        public string LoginUrl { get; set; }
+        public string Email { get; set; }
+        public string AccountType { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get; set; }
+        public string Cpf { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string MotherName { get; set; }
+        public string FatherName { get; set; }
+        public int AccountLevel { get; set; }
+        public string PhoneNumber { get; set; }
+        public object AddressStreetName { get; set; }
+        public object AddressNumber { get; set; }
+        public object AddressComplement { get; set; }
+        public object AddressNeighborhood { get; set; }
+        public object AddressPostalCode { get; set; }
+        public object AddressCityName { get; set; }
+        public object AddressState { get; set; }
+        public object BusinessName { get; set; }
+        public object BusinessCnpj { get; set; }
+        public object BusinessLegalName { get; set; }
     }
 }
