@@ -73,10 +73,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIs\Auth\AuthApi.cs" />
+    <Compile Include="APIs\User\ResponseMessages\UserInfoResponseMessage.cs" />
     <Compile Include="APIs\Constants.cs" />
     <Compile Include="BoletoSimplesClient.cs" />
-    <Compile Include="ClientConnection.cs" />
-    <Compile Include="IApiResponse.cs" />
+    <Compile Include="Common\ClientConnection.cs" />
+    <Compile Include="Common\ApiResponse.cs" />
+    <Compile Include="Common\HttpClientRequestBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +89,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="APIs\Auth\RequestMessages\" />
+    <Folder Include="APIs\Auth\ResponseMessages\" />
     <Folder Include="APIs\BankBilletAccounts\RequestMessages\" />
     <Folder Include="APIs\BankBilletAccounts\ResponseMessages\" />
     <Folder Include="APIs\BankBillets\RequestMessages\" />

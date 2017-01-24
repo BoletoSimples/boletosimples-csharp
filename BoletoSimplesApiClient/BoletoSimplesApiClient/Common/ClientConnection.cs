@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace BoletoSimplesApiClient
+namespace BoletoSimplesApiClient.Common
 {
     public class ClientConnection
     {
@@ -13,8 +13,8 @@ namespace BoletoSimplesApiClient
         public readonly string ClientId;
         public readonly string ClientSecret;
 
-        public ClientConnection() : this(ConfigurationManager.AppSettings["boletosimple-api-version"],
-                                         ConfigurationManager.AppSettings["boletosimple-api-url"],
+        public ClientConnection() : this(ConfigurationManager.AppSettings["boletosimple-api-url"],
+                                         ConfigurationManager.AppSettings["boletosimple-api-version"],
                                          ConfigurationManager.AppSettings["boletosimple-api-token"],
                                          ConfigurationManager.AppSettings["boletosimple-useragent"],
                                          ConfigurationManager.AppSettings["boletosimple-api-return-url"],
