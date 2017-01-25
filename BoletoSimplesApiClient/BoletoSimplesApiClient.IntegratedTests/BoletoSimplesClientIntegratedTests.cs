@@ -1,10 +1,11 @@
-﻿using BoletoSimplesApiClient;
-using BoletoSimplesApiClient.APIs.Auth.ResponseMessages;
+﻿using BoletoSimplesApiClient.APIs.Auth.ResponseMessages;
+using BoletoSimplesApiClient.Common;
+using FluentAssertions;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Configuration;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BoletoSimplesApiClient.IntegratedTests
@@ -21,6 +22,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Act
             var response = await client.Auth.GetUserInfoAsync().ConfigureAwait(false);
             var successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+            client.Dispose();
 
             // Assert
             Assert.That(response.IsSuccess, Is.True);
@@ -28,6 +30,29 @@ namespace BoletoSimplesApiClient.IntegratedTests
         }
 
         [Test]
-        public async Task When_establish_connection_with_error_should_return_unaouthorize_code() { }
+        public async Task When_establish_connection_with_invalid_token_should_return_unauthorize_code()
+        {
+
+            // Arrange
+            var invalidConnection = new ClientConnection(ConfigurationManager.AppSettings["boletosimple-api-url"],
+                                                         ConfigurationManager.AppSettings["boletosimple-api-version"],
+                                                         Guid.NewGuid().ToString(),
+                                                         ConfigurationManager.AppSettings["boletosimple-useragent"],
+                                                         ConfigurationManager.AppSettings["boletosimple-api-return-url"],
+                                                         ConfigurationManager.AppSettings["boletosimple-api-client-id"],
+                                                         ConfigurationManager.AppSettings["boletosimple-api-client-secret"]);
+
+            var client = new BoletoSimplesClient(new HttpClient(), invalidConnection);
+
+            // Act
+            var response = await client.Auth.GetUserInfoAsync().ConfigureAwait(false);
+            var successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+            client.Dispose();
+
+            // Assert
+            Assert.That(response.IsSuccess, Is.False);
+            Assert.That(response.ErrorResponse.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+            successResponse.Should().Equals(new UserInfoResponseMessage());
+        }
     }
 }

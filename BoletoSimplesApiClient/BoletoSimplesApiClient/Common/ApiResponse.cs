@@ -34,7 +34,7 @@ namespace BoletoSimplesApiClient.Common
                 return responseMessage;
             }
 
-            return default(TResponse);
+            return new TResponse();
         }
     }
 }
