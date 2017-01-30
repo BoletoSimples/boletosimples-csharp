@@ -42,6 +42,18 @@ namespace BoletoSimplesApiClient.Common
             return new HttpClientRequestBuilder(_client, _uri, method, _content, _additionalHeaders);
         }
 
+        public HttpClientRequestBuilder AppendQuery(Dictionary<string, string> queryStringParameters)
+        {
+            if (queryStringParameters.Any())
+            {
+                var queryString = string.Join("&", queryStringParameters.Select(p => string.Format("{0}={1}", p.Key, p.Value)));
+                var completeUri = new Uri(Uri.EscapeUriString($"{_uri.AbsoluteUri}?{queryString}"));
+                return new HttpClientRequestBuilder(_client, completeUri, _method, _content, _additionalHeaders);
+            }
+
+            return this;
+        }
+
         public HttpClientRequestBuilder AndOptionalContent(HttpContent content)
         {
             return new HttpClientRequestBuilder(_client, _uri, _method, content, _additionalHeaders);
@@ -66,7 +78,7 @@ namespace BoletoSimplesApiClient.Common
             return message;
         }
 
-        private Uri CombinedUris(Uri baseUri, string resourcePath)
+        private static Uri CombinedUris(Uri baseUri, string resourcePath)
         {
             if (string.IsNullOrEmpty(resourcePath))
             {
