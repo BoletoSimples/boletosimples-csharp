@@ -40,16 +40,32 @@ namespace BoletoSimplesApiClient.Utils
 
         private static string GetLastPageHeaderLink(HttpResponseMessage response)
         {
-            var links = response.Headers.GetValues("Link").SingleOrDefault();
-            var separatorIndex = links.IndexOf(",", 0, links.Length, StringComparison.InvariantCultureIgnoreCase);
-            return links.Substring(0, separatorIndex - 1);
+            IEnumerable<string> links = new List<string>();
+
+            if (response.Headers.TryGetValues("Link", out links))
+            {
+                var link = links.FirstOrDefault();
+                var separatorIndex = link.IndexOf(",", 0, link.Length, StringComparison.InvariantCultureIgnoreCase);
+                return link.Substring(0, separatorIndex - 1);
+            }
+
+            // Hack para inconsistências entre apis
+            return @"<https://sandbox.boletosimples.com.br/api/v1?page=0&per_page=250>; rel='last'";
         }
 
         private static string GetNextPageHeaderLink(HttpResponseMessage response)
         {
-            var links = response.Headers.GetValues("Link").SingleOrDefault();
-            var separatorIndex = links.IndexOf(",", 0, links.Length, StringComparison.InvariantCultureIgnoreCase);
-            return links.Substring(separatorIndex + 1, links.Length - (links.Length - separatorIndex + 1));
+            IEnumerable<string> links = new List<string>();
+
+            if (response.Headers.TryGetValues("Link", out links))
+            {
+                var link = links.FirstOrDefault();
+                var separatorIndex = link.IndexOf(",", 0, link.Length, StringComparison.InvariantCultureIgnoreCase);
+                return link.Substring(separatorIndex + 1, link.Length - (link.Length - separatorIndex + 1));
+            }
+
+            // Hack para inconsistências entre apis
+            return @"<https://sandbox.boletosimples.com.br/api/v1?page=0&per_page=250>; rel='next'";
         }
 
         private Dictionary<string, int> ParseQueryStringPagedValues(string url)
