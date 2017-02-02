@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace BoletoSimplesApiClient.Common
 {
-    public sealed class ApiResponse<TResponse> where TResponse : new()
+    /// <summary>
+    /// Representa o resultado de uma API simples e sem um resultado paginado contem a request de erro e a 
+    /// resposta em caso de sucesso.
+    /// </summary>
+    /// <typeparam name="TSuccessResponse">Tipo do retorno de sucesso</typeparam>
+    public sealed class ApiResponse<TSuccessResponse> where TSuccessResponse : new()
     {
         public readonly bool IsSuccess;
         public readonly HttpResponseMessage ErrorResponse;
@@ -24,17 +29,17 @@ namespace BoletoSimplesApiClient.Common
                 ErrorResponse = response;
         }
 
-        public async Task<TResponse> GeResponseAsync()
+        public async Task<TSuccessResponse> GeResponseAsync()
         {
             if (IsSuccess)
             {
                 var content = await _response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var responseMessage = await Task.FromResult(JsonConvert.DeserializeObject<TResponse>(content, _jsonSerializeSettings))
+                var responseMessage = await Task.FromResult(JsonConvert.DeserializeObject<TSuccessResponse>(content, _jsonSerializeSettings))
                                                 .ConfigureAwait(false);
                 return responseMessage;
             }
 
-            return new TResponse();
+            return new TSuccessResponse();
         }
     }
 }

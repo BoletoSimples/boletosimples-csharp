@@ -84,7 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoletoSimplesClientIntegratedTests.cs" />
+    <Compile Include="ClientConnectionIntegratedTests.cs" />
+    <Compile Include="PagedResponseIntegratedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

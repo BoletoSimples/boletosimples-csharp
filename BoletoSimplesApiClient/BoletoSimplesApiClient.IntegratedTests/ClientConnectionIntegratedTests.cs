@@ -1,4 +1,4 @@
-﻿using BoletoSimplesApiClient.APIs.Auth.ResponseMessages;
+﻿using BoletoSimplesApiClient.APIs.Users.Models;
 using BoletoSimplesApiClient.Common;
 using FluentAssertions;
 using NUnit.Framework;
@@ -11,11 +11,12 @@ using System.Threading.Tasks;
 namespace BoletoSimplesApiClient.IntegratedTests
 {
     [TestFixture]
-    public class BoletoSimplesClientIntegratedTests
+    public class ClientConnectionIntegratedTests
     {
         [Test]
         public async Task Establish_connection_by_access_token_with_sucess()
         {
+
             // Arrange
             var client = new BoletoSimplesClient();
 
@@ -26,7 +27,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
 
             // Assert
             Assert.That(response.IsSuccess, Is.True);
-            Assert.That(successResponse, Is.InstanceOf<UserInfoResponseMessage>());
+            Assert.That(successResponse, Is.InstanceOf<UserInfo>());
         }
 
         [Test]
@@ -52,7 +53,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Assert
             Assert.That(response.IsSuccess, Is.False);
             Assert.That(response.ErrorResponse.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
-            successResponse.Should().Equals(new UserInfoResponseMessage());
+            successResponse.Should().Equals(new UserInfo());
         }
     }
 }

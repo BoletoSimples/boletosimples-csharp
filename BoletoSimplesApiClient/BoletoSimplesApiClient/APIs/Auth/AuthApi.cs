@@ -1,7 +1,5 @@
-﻿using BoletoSimplesApiClient.APIs.Auth.ResponseMessages;
+﻿using BoletoSimplesApiClient.APIs.Users.Models;
 using BoletoSimplesApiClient.Common;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -9,8 +7,6 @@ namespace BoletoSimplesApiClient.APIs.Auth
 {
     public class AuthApi
     {
-        private const string tokenApiUrl = "";
-        private const string oauthApiUrl = "";
         private readonly BoletoSimplesClient _client;
         private readonly HttpClientRequestBuilder _requestBuilder;
 
@@ -20,7 +16,8 @@ namespace BoletoSimplesApiClient.APIs.Auth
             _requestBuilder = new HttpClientRequestBuilder(client);
         }
 
-        /* Needs Implements OAuth workflow 
+        // TODO: Implementar fluxo com OAuth
+        /*
         public async Task<ApiResponse<UserInfoResponseMessage>> GetOAuthToken()
         {
             var request = _requestBuilder.To(new Uri("http://locahost"))
@@ -32,14 +29,18 @@ namespace BoletoSimplesApiClient.APIs.Auth
         }
         */
 
-
-        public async Task<ApiResponse<UserInfoResponseMessage>> GetUserInfoAsync()
+        /// <summary>
+        /// Obtem informação do usuário pelo token de acesso
+        /// </summary>
+        /// <returns>Informações gerais do usuário</returns>
+        /// <see cref="http://api.boletosimples.com.br/authentication/token/"/>
+        public async Task<ApiResponse<UserInfo>> GetUserInfoAsync()
         {
             var request = _requestBuilder.To(_client.Connection.GetBaseUri(), "/userinfo")
                                          .WithMethod(HttpMethod.Get)
                                          .Build();
 
-            return await _client.SendAsync<UserInfoResponseMessage>(request);
+            return await _client.SendAsync<UserInfo>(request);
         }
 
     }

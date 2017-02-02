@@ -17,7 +17,7 @@ namespace BoletoSimplesApiClient.Utils
         public int CurrentPage { get; private set; }
         public int MaxPageSize { get; private set; }
 
-        // Como a paginação vem no header
+        // Como a paginação vem no header é necessário essa expressão para identificala e extrair
         private readonly Regex _regex = new Regex("(page=.+&)|(per_page=.+>)", RegexOptions.Compiled, TimeSpan.FromSeconds(2));
 
         public static PagedHeaderValues ParseFromHttpMessage(HttpResponseMessage response) => new PagedHeaderValues(response);
