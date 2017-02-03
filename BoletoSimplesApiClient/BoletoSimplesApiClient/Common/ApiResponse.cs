@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace BoletoSimplesApiClient.Common
     public sealed class ApiResponse<TSuccessResponse> where TSuccessResponse : new()
     {
         public readonly bool IsSuccess;
+        public readonly HttpStatusCode StatusCode;
         public readonly HttpResponseMessage ErrorResponse;
         private readonly HttpResponseMessage _response;
         private readonly JsonSerializerSettings _jsonSerializeSettings = new JsonSerializerSettings
@@ -24,6 +26,7 @@ namespace BoletoSimplesApiClient.Common
         {
             _response = response;
             IsSuccess = response.IsSuccessStatusCode;
+            StatusCode = response.StatusCode;
 
             if (!IsSuccess)
                 ErrorResponse = response;
@@ -31,7 +34,7 @@ namespace BoletoSimplesApiClient.Common
 
         public async Task<TSuccessResponse> GeResponseAsync()
         {
-            if (IsSuccess)
+            if (IsSuccess && _response.StatusCode != HttpStatusCode.NoContent)
             {
                 var content = await _response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var responseMessage = await Task.FromResult(JsonConvert.DeserializeObject<TSuccessResponse>(content, _jsonSerializeSettings))

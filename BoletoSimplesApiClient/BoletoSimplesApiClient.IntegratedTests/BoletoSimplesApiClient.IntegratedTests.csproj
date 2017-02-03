@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankBilletAccountsApiIntegratedTests.cs" />
     <Compile Include="ClientConnectionIntegratedTests.cs" />
     <Compile Include="PagedResponseIntegratedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

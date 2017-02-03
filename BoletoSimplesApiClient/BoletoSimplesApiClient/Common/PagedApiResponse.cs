@@ -1,5 +1,6 @@
 ﻿using BoletoSimplesApiClient.Utils;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace BoletoSimplesApiClient.Common
     public class PagedApiResponse<TSuccessResponse> where TSuccessResponse : new()
     {
         public readonly bool IsSuccess;
+        public readonly HttpStatusCode StatusCode;
         public readonly HttpResponseMessage ErrorResponse;
 
         private readonly ApiResponse<List<TSuccessResponse>> _apiResponse;
@@ -23,6 +25,7 @@ namespace BoletoSimplesApiClient.Common
             _response = response;
             _apiResponse = new ApiResponse<List<TSuccessResponse>>(response);
             IsSuccess = _apiResponse.IsSuccess;
+            StatusCode = _apiResponse.StatusCode;
 
             if (!IsSuccess)
                 ErrorResponse = response;

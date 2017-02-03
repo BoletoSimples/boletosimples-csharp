@@ -2,9 +2,8 @@
 using BoletoSimplesApiClient.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BoletoSimplesApiClient.APIs.BankBilletAccounts
@@ -13,11 +12,59 @@ namespace BoletoSimplesApiClient.APIs.BankBilletAccounts
     {
         private readonly BoletoSimplesClient _client;
         private readonly HttpClientRequestBuilder _requestBuilder;
+        private const string BANK_BILLET_ACCOUNTS_API = "/bank_billet_accounts";
 
         public BankBilletAccountsApi(BoletoSimplesClient client)
         {
             _client = client;
             _requestBuilder = new HttpClientRequestBuilder(client);
+        }
+
+        /// <summary>
+        /// Cria uma carteira de cliente
+        /// </summary>
+        /// <param name="bankBilletAccountData">dados da conta</param>
+        /// <returns>Conta criada com sucesso</returns>
+        /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billet_accounts/#criar-carteira"/>
+        public async Task<ApiResponse<BankBilletAccount>> PostAsync(BankBilletAccount bankBilletAccountData)
+        {
+            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), BANK_BILLET_ACCOUNTS_API)
+                                         .WithMethod(HttpMethod.Post)
+                                         .AndOptionalContent(bankBilletAccountData)
+                                         .Build();
+
+            return await _client.SendAsync<BankBilletAccount>(request);
+        }
+
+        /// <summary>
+        /// Atualizar informações de uma carteira de cliente
+        /// </summary>
+        /// <param name="bankBilletAccountData">dados da conta</param>
+        /// <param name="id">Identifiador da carteira</param>
+        /// <returns>Conta criada com sucesso</returns>
+        public async Task<ApiResponse<BankBilletAccount>> PutAsync(int id, BankBilletAccount bankBilletAccountData)
+        {
+            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_ACCOUNTS_API}/{id}")
+                                         .WithMethod(HttpMethod.Put)
+                                         .AndOptionalContent(bankBilletAccountData)
+                                         .Build();
+
+            return await _client.SendAsync<BankBilletAccount>(request);
+        }
+
+        /// <summary>
+        /// Obtêm informações da carteira
+        /// </summary>
+        /// <param name="id">Identifiador da carteira</param>
+        /// <returns>Dados da carteira</returns>
+        /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billet_accounts/#informaes-do-carteira"/>
+        public async Task<ApiResponse<BankBilletAccount>> GetAsync(int id)
+        {
+            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_ACCOUNTS_API}/{id}")
+                                         .WithMethod(HttpMethod.Get)
+                                         .Build();
+
+            return await _client.SendAsync<BankBilletAccount>(request);
         }
 
         /// <summary>
@@ -34,12 +81,45 @@ namespace BoletoSimplesApiClient.APIs.BankBilletAccounts
                 throw new ArgumentException("o valor máximo para o argumento maxPerPage é 250");
 
 
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), "/bank_billet_accounts")
+            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), BANK_BILLET_ACCOUNTS_API)
                                          .WithMethod(HttpMethod.Get)
                                          .AppendQuery(new Dictionary<string, string> { ["page"] = pageNumber.ToString(), ["per_page"] = maxPerPage.ToString() })
                                          .Build();
 
             return await _client.SendPagedAsync<BankBilletAccount>(request);
+        }
+
+        /// <summary>
+        /// Solicitar homologação da Carteira de Cobrança
+        /// </summary>
+        /// <param name="id">Identifiador da carteira</param>
+        /// <returns>Conta que foi solicitada a homologação</returns>
+        /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billet_accounts/#solicitar-homologao-da-carteira-de-cobrana"/>
+        public async Task<ApiResponse<BankBilletAccount>> AskAsync(int id)
+        {
+            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_ACCOUNTS_API}/{id}/ask")
+                                         .WithMethod(HttpMethod.Get)
+                                         .Build();
+
+            return await _client.SendAsync<BankBilletAccount>(request);
+        }
+
+        /// <summary>
+        /// Validar uma Carteira de Cobrança
+        /// </summary>
+        /// <param name="id">Identifiador da carteira</param>
+        /// <param name="homologationAmount">O valor em reais utilizado na homologação</param>
+        /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billet_accounts/#validar-carteira-de-cobrana"/>
+        /// <returns></returns>
+        public async Task<ApiResponse<BankBilletAccount>> ValidateAsync(int id, decimal homologationAmount)
+        {
+            var convertedDecimal = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", homologationAmount);
+            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_ACCOUNTS_API}/{id}/validate")
+                                         .WithMethod(HttpMethod.Put)
+                                         .AndOptionalContent(new { HomologationAmount = convertedDecimal })
+                                         .Build();
+
+            return await _client.SendAsync<BankBilletAccount>(request);
         }
     }
 }

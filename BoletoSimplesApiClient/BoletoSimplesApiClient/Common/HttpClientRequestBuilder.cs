@@ -5,6 +5,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Linq;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace BoletoSimplesApiClient.Common
 {
@@ -54,9 +57,17 @@ namespace BoletoSimplesApiClient.Common
             return this;
         }
 
-        public HttpClientRequestBuilder AndOptionalContent(HttpContent content)
+        public HttpClientRequestBuilder AndOptionalContent(object content)
         {
-            return new HttpClientRequestBuilder(_client, _uri, _method, content, _additionalHeaders);
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
+            };
+
+            var jsonContent = JsonConvert.SerializeObject(content);
+            var stringContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            return new HttpClientRequestBuilder(_client, _uri, _method, stringContent, _additionalHeaders);
         }
 
         public HttpClientRequestBuilder AditionalHeaders(Dictionary<string, string> additionalHeaders)
