@@ -5,7 +5,7 @@ Client de acesso escrito em C# para api rest do [www.boletosimples.com.br](http:
 
  Build | Nuget | Coverage %
 --------------|-------|-----------
-|			  |		  |[![Coverage Status](https://coveralls.io/repos/github/BoletoSimples/boletosimples-csharp/badge.svg?branch=master)](https://coveralls.io/github/BoletoSimples/boletosimples-csharp?branch=master)
+|![Build status](https://ci.appveyor.com/api/projects/status/l333hif1lnf1d2lo/branch/master?svg=true) | [![NuGet version](https://badge.fury.io/nu/BoletoSimples-Client.svg)](https://badge.fury.io/nu/BoletoSimples-Client) | [![Coverage Status](https://coveralls.io/repos/github/BoletoSimples/boletosimples-csharp/badge.svg?branch=master)](https://coveralls.io/github/BoletoSimples/boletosimples-csharp?branch=master)
 
 ### Instalação
 

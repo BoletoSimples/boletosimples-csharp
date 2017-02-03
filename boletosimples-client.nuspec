@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>BoletoSimples-Client</id>
+        <version>0.1</version>
+        <title>BoletoSimples Client</title>
+        <owners>boletosimples</owners>
+		<authors>boletosimples, rscouto</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Client .Net para facilitar o acesso a API rest do BoletoSimples</description>
+        <copyright>BoletoSimples Copyright ©  2017</copyright>
+		<language>pt-BR</language>
+		<projectUrl>https://github.com/BoletoSimples/boletosimples-csharp</projectUrl>
+		<iconUrl>https://github.com/BoletoSimples/boletosimples-csharp/blob/master/logo.png</iconUrl>
+        <dependencies>
+            <dependency id="System.Net.Http" version="4.1.0" />
+			<dependency id="Newtonsoft.Json" version="8.0.1" />
+        </dependencies>
+    </metadata>
+    <files>
+		<file src="BoletoSimplesApiClient\bin\Release\BoletoSimplesApiClient.dll" target="lib\net46" />
+		<file src="BoletoSimplesApiClient\bin\Release\BoletoSimplesApiClient.pdb" target="lib\net46" />
+    </files>
+</package>

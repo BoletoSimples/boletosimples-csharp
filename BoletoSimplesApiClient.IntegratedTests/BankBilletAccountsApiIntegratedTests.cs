@@ -60,18 +60,18 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Update_bank_account_billets_by_id_with_success()
         {
             // Arrange
-            PagedApiResponse<BankBilletAccount> allBankBilletAccounts;
             ApiResponse<BankBilletAccount> response;
             BankBilletAccount successResponse;
-            Content.BeneficiaryCnpjCpf = "850.275.556-01";
+
 
             using (var client = new BoletoSimplesClient())
             {
                 // Act
-                allBankBilletAccounts = await client.BankBilletAccounts.GetAsync(0, 250).ConfigureAwait(false);
-                var firtBanckBilletAccounts = await allBankBilletAccounts.GeResponseAsync().ConfigureAwait(false);
+                var createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
+                var createContent = await createResponse.GeResponseAsync().ConfigureAwait(false);
+                createContent.BeneficiaryCnpjCpf = "850.275.556-01";
 
-                response = await client.BankBilletAccounts.PutAsync(firtBanckBilletAccounts.Items.First().Id, Content)
+                response = await client.BankBilletAccounts.PutAsync(createContent.Id, createContent)
                                                           .ConfigureAwait(false);
 
                 successResponse = await response.GeResponseAsync()
