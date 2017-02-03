@@ -95,4 +95,13 @@ public class AnyClass
 ##### Para mais exemplos no veja o [projeto de testes integrados](https://github.com/BoletoSimples/boletosimples-csharp/tree/master/BoletoSimplesApiClient/BoletoSimplesApiClient.IntegratedTests)
 
 
+## Bugs, Issues, Agradecimentos, etc
+
+Comentários são bem-vindos. Envie seu feedback através do [issue tracker do GitHub](http://github.com/BoletoSimples/boletosimples-csharp/issues)
+
+### Autor
+
+[**Rodrigo Couto**](http://github.com/rscouto) trabalhando na [Plataforma Edux](http://www.sistemaedux.com.br)
+
+
 

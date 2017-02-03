@@ -11,7 +11,7 @@
         <copyright>BoletoSimples Copyright ©  2017</copyright>
 		<language>pt-BR</language>
 		<projectUrl>https://github.com/BoletoSimples/boletosimples-csharp</projectUrl>
-		<iconUrl>https://github.com/BoletoSimples/boletosimples-csharp/blob/master/logo.png</iconUrl>
+		<iconUrl>https://raw.githubusercontent.com/BoletoSimples/boletosimples-csharp/master/logo.png</iconUrl>
         <dependencies>
             <dependency id="System.Net.Http" version="4.1.0" />
 			<dependency id="Newtonsoft.Json" version="8.0.1" />
