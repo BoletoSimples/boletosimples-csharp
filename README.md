@@ -1,11 +1,11 @@
 ![Boleto Simples Logo](http://api.boletosimples.com.br/img/logo.png)
 
-# BoletoSimples-CSharp
-Client  C# para api rest do [www.boletosimples.com.br](http://api.boletosimples.com.br/)
+# BoletoSimples C# Client
+Client de acesso escrito em C# para api rest do [www.boletosimples.com.br](http://api.boletosimples.com.br/)
 
- Master Build | Develop Build | Nuget | Coverage %
---------------|---------------|-------|-----------
-|			  |				  |		  |[![Coverage Status](https://coveralls.io/repos/github/BoletoSimples/boletosimples-csharp/badge.svg?branch=master)](https://coveralls.io/github/BoletoSimples/boletosimples-csharp?branch=master)|
+ Build | Nuget | Coverage %
+--------------|-------|-----------
+|			  |		  |[![Coverage Status](https://coveralls.io/repos/github/BoletoSimples/boletosimples-csharp/badge.svg?branch=master)](https://coveralls.io/github/BoletoSimples/boletosimples-csharp?branch=master)
 
 ### Instalação
 
@@ -19,15 +19,16 @@ Client  C# para api rest do [www.boletosimples.com.br](http://api.boletosimples.
 
 ```xml
 <appSettings>
-    <!--BoletoSimples Access Basic Information -->
+    <!--BoletoSimples informações básicas de acesso -->
     <add key="boletosimple-api-version" value="v1" />
     <add key="boletosimple-api-url" value="https://boletosimples.com.br/api" />
     <add key="boletosimple-useragent" value="Meu e-Commerce (meuecommerce@example.com)" />
 
-    <!--BoletoSimples Access By Token Information (http://api.boletosimples.com.br/authentication/token/) -->
+    <!--BoletoSimples token de acesso (http://api.boletosimples.com.br/authentication/token/) -->
     <add key="boletosimple-api-token" value="Seu Token de acessos" />
 
-    <!--BoletoSimples Access By Oauth2 Information (http://api.boletosimples.com.br/authentication/oauth2/) Não suportado na versão atual do client -->
+    <!--BoletoSimples dados de acesso para Oauth2 (http://api.boletosimples.com.br/authentication/oauth2/) 
+        Não suportado na versão atual do client -->
     <add key="boletosimple-api-return-url" value="" />
     <add key="boletosimple-api-client-id" value="" />
     <add key="boletosimple-api-client-secret" value=""/>
@@ -56,7 +57,7 @@ public void AnyMethod
 ```csharp
 public class AnyClass
 {
-    // Como obter as carteiras de cobrança
+    // Obter as carteiras de cobrança
     public async Task GetAllBankBilles()
     {
         using(var client = new BoletoSimplesClient())
@@ -69,7 +70,7 @@ public class AnyClass
         }
     }
 	
-    // Como Obter as informação do usuário
+    // Obter as informação do usuário
     public async Task GetUserInfo()
     {
         var client = new BoletoSimplesClient();
@@ -78,7 +79,7 @@ public class AnyClass
         client.Dispose();
     }
 
-    // Como Criar uma carteira de cobrança
+    // Criar uma carteira de cobrança
     public async Task CreateBankBilletAccount()
     {
         using (var client = new BoletoSimplesClient())
