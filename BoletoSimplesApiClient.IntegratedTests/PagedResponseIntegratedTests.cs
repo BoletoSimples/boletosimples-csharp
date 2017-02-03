@@ -19,7 +19,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
 
                 // Act
                 response = await client.BankBilletAccounts.GetAsync(0, 250).ConfigureAwait(false);
-                successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+                successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
             }
 
             // Assert

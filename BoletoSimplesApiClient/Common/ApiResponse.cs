@@ -32,7 +32,11 @@ namespace BoletoSimplesApiClient.Common
                 ErrorResponse = response;
         }
 
-        public async Task<TSuccessResponse> GeResponseAsync()
+        /// <summary>
+        /// Obtêm a responsta de sucesso
+        /// </summary>
+        /// <returns></returns>
+        public async Task<TSuccessResponse> GetSuccessResponseAsync()
         {
             if (IsSuccess && _response.StatusCode != HttpStatusCode.NoContent)
             {

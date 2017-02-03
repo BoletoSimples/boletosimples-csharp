@@ -22,7 +22,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
 
             // Act
             var response = await client.Auth.GetUserInfoAsync().ConfigureAwait(false);
-            var successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+            var successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
             client.Dispose();
 
             // Assert
@@ -47,7 +47,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
 
             // Act
             var response = await client.Auth.GetUserInfoAsync().ConfigureAwait(false);
-            var successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+            var successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
             client.Dispose();
 
             // Assert

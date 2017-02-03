@@ -3,7 +3,6 @@ using BoletoSimplesApiClient.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
-using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using System.Net;
@@ -44,7 +43,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             {
                 // Act
                 response = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+                successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
             }
 
             // Assert
@@ -68,13 +67,13 @@ namespace BoletoSimplesApiClient.IntegratedTests
             {
                 // Act
                 var createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                var createContent = await createResponse.GeResponseAsync().ConfigureAwait(false);
+                var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
                 createContent.BeneficiaryCnpjCpf = "850.275.556-01";
 
                 response = await client.BankBilletAccounts.PutAsync(createContent.Id, createContent)
                                                           .ConfigureAwait(false);
 
-                successResponse = await response.GeResponseAsync()
+                successResponse = await response.GetSuccessResponseAsync()
                                                 .ConfigureAwait(false);
             }
 
@@ -95,13 +94,13 @@ namespace BoletoSimplesApiClient.IntegratedTests
             using (var client = new BoletoSimplesClient())
             {
                 var createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                var createContent = await createResponse.GeResponseAsync().ConfigureAwait(false);
+                var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
                 // Act
                 response = await client.BankBilletAccounts.AskAsync(createContent.Id)
                                                           .ConfigureAwait(false);
 
-                successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+                successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
             }
 
             // Assert
@@ -121,13 +120,13 @@ namespace BoletoSimplesApiClient.IntegratedTests
             using (var client = new BoletoSimplesClient())
             {
                 var createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                var createContent = await createResponse.GeResponseAsync().ConfigureAwait(false);
+                var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
                 // Act
                 response = await client.BankBilletAccounts.ValidateAsync(createContent.Id, 1.99m)
                                                           .ConfigureAwait(false);
 
-                successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+                successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
             }
 
             // Assert
@@ -150,11 +149,11 @@ namespace BoletoSimplesApiClient.IntegratedTests
             using (var client = new BoletoSimplesClient())
             {
                 createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                expectedResponse = await createResponse.GeResponseAsync().ConfigureAwait(false);
+                expectedResponse = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
                 // Act
                 getResponse = await client.BankBilletAccounts.GetAsync(expectedResponse.Id).ConfigureAwait(false);
-                successResponse = await getResponse.GeResponseAsync().ConfigureAwait(false);
+                successResponse = await getResponse.GetSuccessResponseAsync().ConfigureAwait(false);
             }
 
             // Assert

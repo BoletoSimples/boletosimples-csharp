@@ -31,7 +31,11 @@ namespace BoletoSimplesApiClient.Common
                 ErrorResponse = response;
         }
 
-        public async Task<Paged<TSuccessResponse>> GeResponseAsync()
+        /// <summary>
+        /// Obtêm a resposta de sucesso paginada
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Paged<TSuccessResponse>> GetSuccessResponseAsync()
         {
             var pagingValues = PagedHeaderValues.ParseFromHttpMessage(_response);
 
@@ -39,7 +43,7 @@ namespace BoletoSimplesApiClient.Common
 
             if (IsSuccess)
             {
-                items = await _apiResponse.GeResponseAsync().ConfigureAwait(false);
+                items = await _apiResponse.GetSuccessResponseAsync().ConfigureAwait(false);
             }
 
             return new Paged<TSuccessResponse>(pagingValues.Total,

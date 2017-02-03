@@ -58,7 +58,7 @@ public void AnyMethod
 public class AnyClass
 {
     // Obter as carteiras de cobrança
-    public async Task GetAllBankBilles()
+    public async Task GetAllBankBilletAccounts()
     {
         using(var client = new BoletoSimplesClient())
         {
@@ -66,7 +66,7 @@ public class AnyClass
            var pagedResponse = await client.BankBilletAccounts.GetAsync(0, 250).ConfigureAwait(false);
            
            // Aqui é apenas a resposta sem a mensagem Http
-           var pagedContent = await pagedResponse.GeResponseAsync().ConfigureAwait(false);
+           var pagedContent = await pagedResponse.GetSuccessResponseAsync().ConfigureAwait(false);
         }
     }
 	
@@ -75,7 +75,7 @@ public class AnyClass
     {
         var client = new BoletoSimplesClient();
         var response = await client.Auth.GetUserInfoAsync().ConfigureAwait(false);
-        var successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+        var successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
         client.Dispose();
     }
 
@@ -85,7 +85,7 @@ public class AnyClass
         using (var client = new BoletoSimplesClient())
         {
             var response = await client.BankBilletAccounts.PostAsync(new BankBilletAccount()).ConfigureAwait(false);
-            var successResponse = await response.GeResponseAsync().ConfigureAwait(false);
+            var successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
         }
     }
 }
