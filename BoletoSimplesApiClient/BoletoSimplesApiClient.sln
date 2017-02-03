@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoSimplesApiClient", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoSimplesApiClient.IntegratedTests", "BoletoSimplesApiClient.IntegratedTests\BoletoSimplesApiClient.IntegratedTests.csproj", "{95C980BB-7929-486A-966F-F087E78DD7CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoSimplesApiClient.UnitTests", "BoletoSimplesApiClient.UnitTests\BoletoSimplesApiClient.UnitTests.csproj", "{8562A9FC-C36A-4A0D-A88E-1624FC974058}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{95C980BB-7929-486A-966F-F087E78DD7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95C980BB-7929-486A-966F-F087E78DD7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95C980BB-7929-486A-966F-F087E78DD7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8562A9FC-C36A-4A0D-A88E-1624FC974058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8562A9FC-C36A-4A0D-A88E-1624FC974058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8562A9FC-C36A-4A0D-A88E-1624FC974058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8562A9FC-C36A-4A0D-A88E-1624FC974058}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
