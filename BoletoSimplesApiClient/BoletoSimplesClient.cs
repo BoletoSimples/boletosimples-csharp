@@ -15,7 +15,7 @@ namespace BoletoSimplesApiClient
         public readonly ClientConnection Connection;
 
         /// <summary>
-        /// Auth prove informações do usuário pelo token de acesso
+        /// Api que prove informações do usuário pelo token de acesso
         /// </summary>
         public readonly AuthApi Auth;
 
@@ -24,26 +24,34 @@ namespace BoletoSimplesApiClient
         /// </summary>
         public readonly BankBilletAccountsApi BankBilletAccounts;
 
-
         private readonly HttpClient _client;
-        private readonly string _oAuthApiToken;
 
+        /// <summary>
+        /// Client default sem personalizar nenuma configuração nesse construtor suas configurações provem do arquivo de configuração
+        /// </summary>
         public BoletoSimplesClient() : this(new HttpClient(), new ClientConnection())
         { }
 
+        /// <summary>
+        /// Client default com dados da conexão de externos ao seu arquivo de configuração
+        /// </summary>
+        /// <param name="clientConnection">Dados de conexão com a api</param>
+        public BoletoSimplesClient(ClientConnection clientConnection) : this(new HttpClient(), clientConnection)
+        { }
+
+        /// <summary>
+        /// Client http customizado e dados da conexão de externos ao seu arquivo de configuração
+        /// </summary>
+        /// <param name="client">Sua versão do HttpClient</param>
+        /// <param name="clientConnection">Dados de conexão com a api</param>
         public BoletoSimplesClient(HttpClient client, ClientConnection clientConnection)
         {
             _client = client;
+            _client.BaseAddress = clientConnection.GetBaseUri();
             Connection = clientConnection;
-            _client.BaseAddress = Connection.GetBaseUri();
+
             Auth = new AuthApi(this);
             BankBilletAccounts = new BankBilletAccountsApi(this);
-        }
-
-        public void Dispose()
-        {
-            _client.Dispose();
-            GC.SuppressFinalize(this);
         }
 
         public async Task<ApiResponse<T>> SendAsync<T>(HttpRequestMessage request) where T : new()
@@ -60,6 +68,12 @@ namespace BoletoSimplesApiClient
             request.Dispose();
 
             return new PagedApiResponse<T>(response);
+        }
+
+        public void Dispose()
+        {
+            _client.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }
