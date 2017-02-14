@@ -3,6 +3,9 @@ using System.Configuration;
 
 namespace BoletoSimplesApiClient.Common
 {
+    /// <summary>
+    /// Representa os parametros de conexão utilizados pelo client
+    /// </summary>
     public class ClientConnection
     {
         public readonly string UserAgent;

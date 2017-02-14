@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BoletoSimplesApiClient.Common;
+using System;
 
 namespace BoletoSimplesApiClient.APIs.BankBilletAccounts.Moodels
 {
+    [JsonRoot("bank_billet_account")]
     public class BankBilletAccount
     {
         public int Id { get; set; }
@@ -16,15 +14,19 @@ namespace BoletoSimplesApiClient.APIs.BankBilletAccounts.Moodels
         public string AccountNumber { get; set; }
         public string AccountDigit { get; set; }
         public string Extra1 { get; set; }
-        public object Extra1Digit { get; set; }
-        public object Extra2 { get; set; }
-        public object Extra2Digit { get; set; }
-        public object Extra3 { get; set; }
+        public string Extra1Digit { get; set; }
+        public string Extra2 { get; set; }
+        public string Extra2Digit { get; set; }
+        public string Extra3 { get; set; }
         public string BeneficiaryName { get; set; }
         public string BeneficiaryCnpjCpf { get; set; }
         public string BeneficiaryAddress { get; set; }
         public string Name { get; set; }
         public string Status { get; set; }
+        public DateTime? HomologatedAt { get; set; }
+        public string NextRemittanceNumber { get; set; }
+        public bool Default { get; set; }
+        public string Configuration { get; set; }
         public BankContract BankContract { get; set; }
     }
 

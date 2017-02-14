@@ -9,9 +9,11 @@ Client de acesso escrito em C# para api rest do [www.boletosimples.com.br](http:
 
 ### Instalação
 
-* No visual Studio > Abrir o **Package Manager Console**
+No visual Studio > Abrir o **Package Manager Console** e digitar o comando abaixo:
 
+```powershell
 > Install-Package BoletoSimples-Client
+```
 
 ### Opções de Configuração
 
@@ -21,6 +23,7 @@ Client de acesso escrito em C# para api rest do [www.boletosimples.com.br](http:
 <appSettings>
     <!--BoletoSimples informações básicas de acesso -->
     <add key="boletosimple-api-version" value="v1" />
+    <!-- Poderia ser o ambiente de sandbox https://sandbox.boletosimples.com.br/api -->
     <add key="boletosimple-api-url" value="https://boletosimples.com.br/api" />
     <add key="boletosimple-useragent" value="Meu e-Commerce (meuecommerce@example.com)" />
 
@@ -39,15 +42,15 @@ Client de acesso escrito em C# para api rest do [www.boletosimples.com.br](http:
 ```csharp
 public void AnyMethod
 {
-    var invalidConnection = new ClientConnection("boletosimple-api-url",
-                                                 "boletosimple-api-version",
-                                                 "boletosimple-api-token",
-                                                 "boletosimple-useragent",
-                                                 "boletosimple-api-return-url",
-                                                 "boletosimple-api-client-id",
-                                                 "boletosimple-api-client-secret");
+    var myConnection = new ClientConnection("boletosimple-api-url",
+                                            "boletosimple-api-version",
+                                            "boletosimple-api-token",
+                                            "boletosimple-useragent",
+                                            "boletosimple-api-return-url",
+                                            "boletosimple-api-client-id",
+                                            "boletosimple-api-client-secret");
 
-    var client = new BoletoSimplesClient(new HttpClient(), invalidConnection);
+    var client = new BoletoSimplesClient(myConnection);
 }
 
 ```
@@ -65,7 +68,7 @@ public class AnyClass
            // pagedResponse contém a resposta de erro e o conteudo no caso de sucesso
            var pagedResponse = await client.BankBilletAccounts.GetAsync(0, 250).ConfigureAwait(false);
            
-           // Aqui é apenas a resposta sem a mensagem Http
+           // Aqui é apenas a resposta de sucesso sem as informações adicionais da resposta anterior
            var pagedContent = await pagedResponse.GetSuccessResponseAsync().ConfigureAwait(false);
         }
     }
@@ -88,16 +91,33 @@ public class AnyClass
             var successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
         }
     }
+
+     // Criar um boleto
+    public async Task CreateBankBilletAccount()
+    {
+        using (var client = new BoletoSimplesClient())
+        {
+            var response = await client.BankBillets.PostAsync(new BankBillet()).ConfigureAwait(false);
+            var successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
+        }
+    }
 }
 ```
-### [Boleto Simples Documentação Oficial](http://api.boletosimples.com.br/)
 
-##### Para mais exemplos no veja o [projeto de testes integrados](https://github.com/BoletoSimples/boletosimples-csharp/tree/master/BoletoSimplesApiClient/BoletoSimplesApiClient.IntegratedTests)
+### Apis Suportadas até o momento
+* **Informações do Usuário**
+* **Carteiras de Clientes**
+* **Boletos**
+
+--------------------
+### Outras Informações
+* [Boleto Simples Documentação Oficial](http://api.boletosimples.com.br/)
+* Para mais exemplos de utilização veja o **[projeto de testes integrados](https://github.com/BoletoSimples/boletosimples-csharp/tree/master/BoletoSimplesApiClient/BoletoSimplesApiClient.IntegratedTests)**
 
 
-## Bugs, Issues, Agradecimentos, etc
+### Bugs, Dúvidas, Issues, Agradecimentos, etc
 
-Comentários são bem-vindos. Envie seu feedback através do [issue tracker do GitHub](http://github.com/BoletoSimples/boletosimples-csharp/issues)
+Através do [issue tracker do GitHub](http://github.com/BoletoSimples/boletosimples-csharp/issues)
 
 ### Autor
 

@@ -1,58 +1,42 @@
 ﻿using BoletoSimplesApiClient.APIs.BankBilletAccounts.Moodels;
 using BoletoSimplesApiClient.Common;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
 using System.Threading.Tasks;
 using FluentAssertions;
 using System.Net;
+using BoletoSimplesApiClient.UnitTests.Json;
 
 namespace BoletoSimplesApiClient.IntegratedTests
 {
     [TestFixture]
-    public class BankBilletAccountsApiIntegratedTests
+    public class BankBilletAccountsApiIntegratedTests : IntegratedTestBase
     {
-        private static readonly JsonSerializerSettings _jsonSerializeSettings = new JsonSerializerSettings
+        private BankBilletAccount Content { get; set; }
+
+        [SetUp]
+        public void PrepareTest()
         {
-            ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
-        };
-
-        private const string BANK_ACCOUNT_BILLET = @"{'beneficiary_name':'Carteira pessoa fisica', 
-                                                      'beneficiary_cnpj_cpf':'388.282.473-55', 
-                                                      'beneficiary_address':'Qualquer Rua Nº 100, Sala 1001', 
-                                                      'bank_contract_slug': 'sicoob-02', 
-                                                      'agency_number': '4327', 
-                                                      'agency_digit': '3', 
-                                                      'account_number': '3666', 
-                                                      'account_digit': '8',
-                                                      'next_our_number': '1', 
-                                                      'extra1': '1234567'}";
-
-
-        private static readonly BankBilletAccount Content = JsonConvert.DeserializeObject<BankBilletAccount>(BANK_ACCOUNT_BILLET, _jsonSerializeSettings);
-
+            Content = JsonConvert.DeserializeObject<BankBilletAccount>(JsonConstants.BankBilletAccount);
+        }
 
         [Test]
-        public async Task Create_bank_account_billets_by_id_with_success()
+        public async Task Create_bank_account_billets_by_with_success()
         {
             // Arrange
             ApiResponse<BankBilletAccount> response;
             BankBilletAccount successResponse;
+            Content.BeneficiaryName = "Create-Beneficiary-Name";
 
-            using (var client = new BoletoSimplesClient())
-            {
-                // Act
-                response = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
-            }
+            // Act
+            response = await Client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
+            successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
             Assert.That(response.IsSuccess, Is.True);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Created));
-
             Assert.That(successResponse, Is.InstanceOf<BankBilletAccount>());
             Assert.That(successResponse.BeneficiaryCnpjCpf, Is.EqualTo(Content.BeneficiaryCnpjCpf));
-
         }
 
         [Test]
@@ -61,21 +45,18 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Arrange
             ApiResponse<BankBilletAccount> response;
             BankBilletAccount successResponse;
+            Content.BeneficiaryName = "Updatable-Beneficiary-Name";
 
+            // Act
+            var createResponse = await Client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
+            var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
+            createContent.BeneficiaryCnpjCpf = "850.275.556-01";
 
-            using (var client = new BoletoSimplesClient())
-            {
-                // Act
-                var createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
-                createContent.BeneficiaryCnpjCpf = "850.275.556-01";
+            response = await Client.BankBilletAccounts.PutAsync(createContent.Id, createContent)
+                                                      .ConfigureAwait(false);
 
-                response = await client.BankBilletAccounts.PutAsync(createContent.Id, createContent)
-                                                          .ConfigureAwait(false);
-
-                successResponse = await response.GetSuccessResponseAsync()
-                                                .ConfigureAwait(false);
-            }
+            successResponse = await response.GetSuccessResponseAsync()
+                                            .ConfigureAwait(false);
 
             // Assert
             Assert.That(response.IsSuccess, Is.True);
@@ -90,18 +71,16 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Arrange
             ApiResponse<BankBilletAccount> response;
             BankBilletAccount successResponse;
+            Content.BeneficiaryName = "Homologation-Beneficiary-Name";
 
-            using (var client = new BoletoSimplesClient())
-            {
-                var createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
+            var createResponse = await Client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
+            var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
-                // Act
-                response = await client.BankBilletAccounts.AskAsync(createContent.Id)
-                                                          .ConfigureAwait(false);
+            // Act
+            response = await Client.BankBilletAccounts.AskAsync(createContent.Id)
+                                                      .ConfigureAwait(false);
 
-                successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
-            }
+            successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
             Assert.That(response.IsSuccess, Is.True);
@@ -116,18 +95,15 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Arrange
             ApiResponse<BankBilletAccount> response;
             BankBilletAccount successResponse;
+            Content.BeneficiaryName = "Validate-Beneficiary-Name";
+            var createResponse = await Client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
+            var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
-            using (var client = new BoletoSimplesClient())
-            {
-                var createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
+            // Act
+            response = await Client.BankBilletAccounts.ValidateAsync(createContent.Id, 1.99m)
+                                                      .ConfigureAwait(false);
 
-                // Act
-                response = await client.BankBilletAccounts.ValidateAsync(createContent.Id, 1.99m)
-                                                          .ConfigureAwait(false);
-
-                successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
-            }
+            successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
             Assert.That(response.IsSuccess, Is.True);
@@ -142,19 +118,16 @@ namespace BoletoSimplesApiClient.IntegratedTests
             ApiResponse<BankBilletAccount> createResponse;
             ApiResponse<BankBilletAccount> getResponse;
 
-
             BankBilletAccount expectedResponse;
             BankBilletAccount successResponse;
+            Content.BeneficiaryName = "Get-Beneficiary-Name";
 
-            using (var client = new BoletoSimplesClient())
-            {
-                createResponse = await client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
-                expectedResponse = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
+            createResponse = await Client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
+            expectedResponse = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
-                // Act
-                getResponse = await client.BankBilletAccounts.GetAsync(expectedResponse.Id).ConfigureAwait(false);
-                successResponse = await getResponse.GetSuccessResponseAsync().ConfigureAwait(false);
-            }
+            // Act
+            getResponse = await Client.BankBilletAccounts.GetAsync(expectedResponse.Id).ConfigureAwait(false);
+            successResponse = await getResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
             Assert.That(getResponse.IsSuccess, Is.True);
