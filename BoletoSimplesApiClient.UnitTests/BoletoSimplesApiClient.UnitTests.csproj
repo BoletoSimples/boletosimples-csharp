@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Json\BrazilianCurrencyJsonConverterUnitTest.cs" />
     <Compile Include="Json\JsonConstants.cs" />
+    <Compile Include="Json\ModelsSerializeDeserializeUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
