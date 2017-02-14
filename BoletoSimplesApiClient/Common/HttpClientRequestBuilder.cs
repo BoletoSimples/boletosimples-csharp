@@ -16,6 +16,12 @@ namespace BoletoSimplesApiClient.Common
         private readonly HttpContent _content;
         private readonly BoletoSimplesClient _client;
         private readonly Dictionary<string, string> _additionalHeaders = new Dictionary<string, string>();
+        private readonly JsonSerializerSettings _jsonDefaultSettings = new JsonSerializerSettings
+        {
+            ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() },
+            DefaultValueHandling = DefaultValueHandling.Ignore,
+            NullValueHandling = NullValueHandling.Ignore
+        };
 
         public HttpClientRequestBuilder(BoletoSimplesClient client) : this(client, null, null, null, new Dictionary<string, string>()) { }
 
@@ -57,12 +63,14 @@ namespace BoletoSimplesApiClient.Common
 
         public HttpClientRequestBuilder AndOptionalContent(object content)
         {
-            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
-            };
+            JsonConvert.DefaultSettings = () => _jsonDefaultSettings;
 
             var jsonContent = JsonConvert.SerializeObject(content);
+            var rootNameValue = JsonRootAttribute.GetAttributeValue(content.GetType());
+
+            if (!string.IsNullOrEmpty(rootNameValue))
+                jsonContent = $"{{\"{rootNameValue}\": {jsonContent}}}";
+
             var stringContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
             return new HttpClientRequestBuilder(_client, _uri, _method, stringContent, _additionalHeaders);
@@ -104,6 +112,5 @@ namespace BoletoSimplesApiClient.Common
             var authToken = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_client.Connection.ApiToken}:X"));
             return new AuthenticationHeaderValue("Basic", authToken);
         }
-
     }
 }
