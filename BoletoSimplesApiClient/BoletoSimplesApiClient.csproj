@@ -72,7 +72,6 @@
   <ItemGroup>
     <Compile Include="APIs\Auth\AuthApi.cs" />
     <Compile Include="APIs\BankBilletAccounts\BankBilletAccountsApi.cs" />
-    <Compile Include="APIs\BankBilletAccounts\BankBilletsAccountStatus.cs" />
     <Compile Include="APIs\BankBilletAccounts\Models\BankBilletAccount.cs" />
     <Compile Include="APIs\Users\Models\UserInfo.cs" />
     <Compile Include="APIs\Constants.cs" />
@@ -94,9 +93,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="APIs\BankBilletAccounts\RequestMessages\" />
-    <Folder Include="APIs\BankBilletAccounts\ResponseMessages\" />
-    <Folder Include="APIs\BankBillets\RequestMessages\" />
     <Folder Include="APIs\BankBillets\ResponseMessages\" />
     <Folder Include="APIs\CustomerSubscriptions\RequestMessages\" />
     <Folder Include="APIs\CustomerSubscriptions\ResponseMessages\" />
