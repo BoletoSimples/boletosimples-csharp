@@ -91,12 +91,23 @@ public class AnyClass
             var successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
         }
     }
+
+     // Criar um boleto
+    public async Task CreateBankBilletAccount()
+    {
+        using (var client = new BoletoSimplesClient())
+        {
+            var response = await client.BankBillets.PostAsync(new BankBillet()).ConfigureAwait(false);
+            var successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
+        }
+    }
 }
 ```
 
 ### Apis Suportadas até o momento
 * **Informações do Usuário**
 * **Carteiras de Clientes**
+* **Boletos**
 
 --------------------
 ### Outras Informações
