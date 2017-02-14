@@ -1,10 +1,7 @@
-version: 0.1.{build}
-
 branches:
   only:
   - master
 configuration: Release
-skip_non_tags: true
 max_jobs: 1
 before_build:
 - cmd: nuget restore BoletoSimplesApiClient.sln
@@ -50,9 +47,8 @@ deploy:
   release: Stable $(appveyor_build_version)
   description: "Versão estável do client .Net para acesso a API do BoletoSimples"
   force_update: true
+  appveyor_repo_tag: true
   auth_token:
     #GitHub trocar pelo da conta boletosimples-ci
     secure: EJCiUbMZOzdu1xi1+9GgprukVKCbCqbhrHH24IjRIzG96NGG2u3WNSBd93wKXflg
   artifact: /BoletoSimples-Client.*\.nupkg/
-  on:
-    branch: master
