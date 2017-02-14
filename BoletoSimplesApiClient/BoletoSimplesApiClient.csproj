@@ -73,6 +73,10 @@
     <Compile Include="APIs\Auth\AuthApi.cs" />
     <Compile Include="APIs\BankBilletAccounts\BankBilletAccountsApi.cs" />
     <Compile Include="APIs\BankBilletAccounts\Models\BankBilletAccount.cs" />
+    <Compile Include="APIs\BankBillets\BankBilletsApi.cs" />
+    <Compile Include="APIs\BankBillets\BankBilletsConstants.cs" />
+    <Compile Include="APIs\BankBillets\Models\BankBillet.cs" />
+    <Compile Include="APIs\BankBillets\RequestMessages\Duplicate.cs" />
     <Compile Include="APIs\Users\Models\UserInfo.cs" />
     <Compile Include="APIs\Constants.cs" />
     <Compile Include="BoletoSimplesClient.cs" />
