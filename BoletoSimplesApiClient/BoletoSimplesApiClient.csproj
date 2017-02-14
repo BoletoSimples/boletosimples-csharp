@@ -80,6 +80,7 @@
     <Compile Include="Common\ClientConnection.cs" />
     <Compile Include="Common\ApiResponse.cs" />
     <Compile Include="Common\HttpClientRequestBuilder.cs" />
+    <Compile Include="Common\JsonRootAttribute.cs" />
     <Compile Include="Common\Paged.cs" />
     <Compile Include="Common\PagedApiResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
