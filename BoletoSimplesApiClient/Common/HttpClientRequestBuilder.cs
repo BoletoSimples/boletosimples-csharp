@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.IO;
 
 namespace BoletoSimplesApiClient.Common
 {
@@ -13,6 +14,7 @@ namespace BoletoSimplesApiClient.Common
     {
         private readonly Uri _uri;
         private readonly HttpMethod _method;
+        private readonly bool _isFileContent;
         private readonly HttpContent _content;
         private readonly BoletoSimplesClient _client;
         private readonly Dictionary<string, string> _additionalHeaders = new Dictionary<string, string>();
@@ -36,6 +38,9 @@ namespace BoletoSimplesApiClient.Common
             _method = method;
             _content = content;
             _additionalHeaders = additionalHeaders;
+
+            if (content is StreamContent)
+                _isFileContent = true;
         }
 
         public HttpClientRequestBuilder To(Uri baseUri, string resourcePath)
@@ -61,6 +66,11 @@ namespace BoletoSimplesApiClient.Common
             return this;
         }
 
+        /// <summary>
+        /// Adiciona objeto como conteudo, não deve ser utilizado para arquivos
+        /// </summary>
+        /// <param name="content">objeto representando o modelo a ser enviado</param>
+        /// <returns></returns>
         public HttpClientRequestBuilder AndOptionalContent(object content)
         {
             JsonConvert.DefaultSettings = () => _jsonDefaultSettings;
@@ -74,6 +84,21 @@ namespace BoletoSimplesApiClient.Common
             var stringContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
             return new HttpClientRequestBuilder(_client, _uri, _method, stringContent, _additionalHeaders);
+        }
+
+        /// <summary>
+        /// Representa o arquivo a ser enviado ao servidor
+        /// </summary>
+        /// <param name="paramKey">nome do parâmetro que representa o arquivo</param>
+        /// <param name="fileName">nome do arquivo</param>
+        /// <param name="paramFileStream">stream do conteudo arquivo</param>
+        /// <returns></returns>
+        public HttpClientRequestBuilder AppendFileContent(string paramKey, string fileName, Stream paramFileStream)
+        {
+            HttpContent fileStreamContent = new StreamContent(paramFileStream);
+            var content = new MultipartFormDataContent();
+            content.Add(fileStreamContent, paramKey, fileName);
+            return new HttpClientRequestBuilder(_client, _uri, _method, content, _additionalHeaders);
         }
 
         public HttpClientRequestBuilder AditionalHeaders(Dictionary<string, string> additionalHeaders)
