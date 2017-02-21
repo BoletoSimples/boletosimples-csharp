@@ -3,9 +3,7 @@ using BoletoSimplesApiClient.APIs.BankBillets.RequestMessages;
 using BoletoSimplesApiClient.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BoletoSimplesApiClient.APIs.BankBillets
@@ -142,7 +140,7 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
 
             return await _client.SendPagedAsync<BankBillet>(request);
         }
-        
+
         /// <summary>
         /// Listar boletos paginado filtrado por nosso numero
         /// </summary>

@@ -77,6 +77,8 @@
     <Compile Include="APIs\BankBillets\BankBilletsConstants.cs" />
     <Compile Include="APIs\BankBillets\Models\BankBillet.cs" />
     <Compile Include="APIs\BankBillets\RequestMessages\Duplicate.cs" />
+    <Compile Include="APIs\Discharges\DischargesApi.cs" />
+    <Compile Include="APIs\Discharges\Models\Discharge.cs" />
     <Compile Include="APIs\Users\Models\UserInfo.cs" />
     <Compile Include="APIs\Constants.cs" />
     <Compile Include="BoletoSimplesClient.cs" />

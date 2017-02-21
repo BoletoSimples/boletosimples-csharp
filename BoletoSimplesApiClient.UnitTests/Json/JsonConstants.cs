@@ -21,5 +21,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
                                             'fine_for_delay': 1.0,'late_payment_interest': 2.0,'guarantor_name': 'Name','guarantor_cnpj_cpf':'450.824.194-80','payment_place': 'Local','instructions': 'Instruções para o Caixa',
                                             'document_date':'2030-01-31 00:00:00','document_type': '','document_number': 99999999,'document_amount': '1.345,56','acceptance':'N','remittance_id': 999,'notes': 'Anotações','paid_bank':'Banco de Pagamento',
                                             'paid_agency': 'Agência de Pagamento'}";
+
+        public const string Discharge = @"{'id':132,'filename':'arquivo-test.ret','processed_at':null,'created_via_api':true,'status':'unprocessed','bank_billet_account_id':null,'created_via_integration':null}";
     }
 }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using System.Net;
 using BoletoSimplesApiClient.UnitTests.Json;
+using System;
+using System.Collections.Generic;
 
 namespace BoletoSimplesApiClient.IntegratedTests
 {

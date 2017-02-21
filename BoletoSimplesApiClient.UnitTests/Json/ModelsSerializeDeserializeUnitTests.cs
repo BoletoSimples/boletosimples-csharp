@@ -2,14 +2,10 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Newtonsoft.Json.Converters;
 using BoletoSimplesApiClient.APIs.BankBilletAccounts.Moodels;
+using BoletoSimplesApiClient.APIs.Discharges.Models;
 
 namespace BoletoSimplesApiClient.UnitTests.Json
 {
@@ -41,7 +37,6 @@ namespace BoletoSimplesApiClient.UnitTests.Json
 
             // Other Asserts
             firstBankBilletAccount.ShouldBeEquivalentTo(secondBankBilletAccount);
-
         }
 
         [Test]
@@ -61,7 +56,25 @@ namespace BoletoSimplesApiClient.UnitTests.Json
 
             // Other Asserts
             firstBankBillets.ShouldBeEquivalentTo(secondBankBillets);
+        }
 
+        [Test]
+        public async Task Given_input_json_of_model_Discharges_should_be_serialize_and_desesialize_right()
+        {
+            // Arrange
+            Discharge firstDischarge = null;
+            Discharge secondDischarge = null;
+
+            // Act && Assert
+            Assert.DoesNotThrowAsync(async () =>
+            {
+                firstDischarge = await Task.FromResult(JsonConvert.DeserializeObject<Discharge>(JsonConstants.Discharge)).ConfigureAwait(false);
+                var bankBilletJson = await Task.FromResult(JsonConvert.SerializeObject(firstDischarge)).ConfigureAwait(false);
+                secondDischarge = await Task.FromResult(JsonConvert.DeserializeObject<Discharge>(bankBilletJson)).ConfigureAwait(false);
+            });
+
+            // Other Asserts
+            firstDischarge.ShouldBeEquivalentTo(secondDischarge);
         }
     }
 }
