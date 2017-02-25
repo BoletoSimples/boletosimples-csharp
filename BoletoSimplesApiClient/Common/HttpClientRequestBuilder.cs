@@ -14,7 +14,6 @@ namespace BoletoSimplesApiClient.Common
     {
         private readonly Uri _uri;
         private readonly HttpMethod _method;
-        private readonly bool _isFileContent;
         private readonly HttpContent _content;
         private readonly BoletoSimplesClient _client;
         private readonly Dictionary<string, string> _additionalHeaders = new Dictionary<string, string>();
@@ -38,9 +37,6 @@ namespace BoletoSimplesApiClient.Common
             _method = method;
             _content = content;
             _additionalHeaders = additionalHeaders;
-
-            if (content is StreamContent)
-                _isFileContent = true;
         }
 
         public HttpClientRequestBuilder To(Uri baseUri, string resourcePath)
@@ -127,9 +123,7 @@ namespace BoletoSimplesApiClient.Common
                 return baseUri;
             }
 
-            var finalUri = resourcePath.First().Equals('/') ? $"{baseUri.ToString()}{resourcePath}" : $"{baseUri.ToString()}/{resourcePath}";
-
-            return new Uri(finalUri);
+            return new Uri(baseUri, resourcePath);
         }
 
         private AuthenticationHeaderValue GetAuthHeader()

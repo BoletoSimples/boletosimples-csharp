@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\HttpRequestBuilderUnitTest.cs" />
     <Compile Include="Json\BrazilianCurrencyJsonConverterUnitTest.cs" />
     <Compile Include="Json\JsonConstants.cs" />
     <Compile Include="Json\ModelsSerializeDeserializeUnitTests.cs" />
