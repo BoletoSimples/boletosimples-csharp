@@ -11,7 +11,7 @@ namespace BoletoSimplesApiClient.Common
     /// resposta em caso de sucesso
     /// </summary>
     /// <typeparam name="TSuccessResponse">Tipo do retorno de sucesso</typeparam>
-    public class PagedApiResponse<TSuccessResponse> where TSuccessResponse : new()
+    public sealed class PagedApiResponse<TSuccessResponse>
     {
         public readonly bool IsSuccess;
         public readonly HttpStatusCode StatusCode;

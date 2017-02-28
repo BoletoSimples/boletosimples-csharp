@@ -11,7 +11,7 @@ namespace BoletoSimplesApiClient.Common
     /// resposta em caso de sucesso.
     /// </summary>
     /// <typeparam name="TSuccessResponse">Tipo do retorno de sucesso</typeparam>
-    public sealed class ApiResponse<TSuccessResponse> where TSuccessResponse : new()
+    public sealed class ApiResponse<TSuccessResponse>
     {
         public readonly bool IsSuccess;
         public readonly HttpStatusCode StatusCode;
@@ -35,7 +35,7 @@ namespace BoletoSimplesApiClient.Common
         /// <summary>
         /// Obtêm a responsta de sucesso
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna a resposta de sucesso ou nulo em caso de falha</returns>
         public async Task<TSuccessResponse> GetSuccessResponseAsync()
         {
             if (IsSuccess && _response.StatusCode != HttpStatusCode.NoContent)
@@ -46,7 +46,7 @@ namespace BoletoSimplesApiClient.Common
                 return responseMessage;
             }
 
-            return new TSuccessResponse();
+            return default(TSuccessResponse);
         }
     }
 }

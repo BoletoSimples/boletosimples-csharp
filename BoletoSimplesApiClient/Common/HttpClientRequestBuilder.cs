@@ -123,7 +123,11 @@ namespace BoletoSimplesApiClient.Common
                 return baseUri;
             }
 
-            return new Uri(baseUri, resourcePath);
+            var baseUrl = baseUri.AbsoluteUri;
+            var concatenatedUrls = resourcePath.First() == '/' || baseUrl.Last() == '/' ?
+                                                $"{baseUrl}{resourcePath}" :
+                                                $"{baseUrl}/{resourcePath}";
+            return new Uri(concatenatedUrls);
         }
 
         private AuthenticationHeaderValue GetAuthHeader()
