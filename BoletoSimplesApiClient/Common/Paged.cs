@@ -6,7 +6,7 @@ namespace BoletoSimplesApiClient.Common
     /// Representa uma resposta paginada 
     /// </summary>
     /// <typeparam name="TResponse">Model referente aos itens que compõem o resultado</typeparam>
-    public sealed class Paged<TResponse> where TResponse : new()
+    public sealed class Paged<TResponse>
     {
         public int Total { get; private set; }
         public int TotalOfPages { get; private set; }

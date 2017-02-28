@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Scotch;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
@@ -18,6 +19,9 @@ namespace BoletoSimplesApiClient.IntegratedTests
     public class IntegratedTestBase
     {
         protected readonly BoletoSimplesClient Client;
+        protected readonly string BaseDir = AppDomain.CurrentDomain.BaseDirectory.Replace("\\bin", "")
+                                                                                 .Replace("\\Debug", "")
+                                                                                 .Replace("\\Release", "");
 
         public IntegratedTestBase()
         {
@@ -46,15 +50,33 @@ namespace BoletoSimplesApiClient.IntegratedTests
 
         public override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancelationToken)
         {
-            var contentHash = string.Empty;
+            var requestContent = string.Empty;
+            var contentBoundary = string.Empty;
 
             if (request.Content != null)
-                contentHash = await request.Content.ReadAsStringAsync().ConfigureAwait(false);
+            {
+                requestContent = await request.Content.ReadAsStringAsync().ConfigureAwait(false);
+                requestContent = RemoveBoundaryValue(request, requestContent);
+            }
 
-            var uuid = MD5Hash($"{request.Method}-{request.RequestUri.AbsoluteUri}-{contentHash.Trim()}");
+            var uuid = MD5Hash($"{request.Method}-{request.RequestUri.AbsoluteUri}-{requestContent.Trim()}");
             var newUri = QueryHelpers.AddQueryString(request.RequestUri.AbsoluteUri, "uuid", uuid);
             request.RequestUri = new Uri(newUri);
             return await ScotchHttpClient.SendAsync(request).ConfigureAwait(false);
+        }
+
+        private static string RemoveBoundaryValue(HttpRequestMessage request, string requestContent)
+        {
+            if (request.Content is MultipartFormDataContent)
+            {
+                var content = ((MultipartFormDataContent)request.Content); ;
+                var headerContentType = content.Headers.ContentType;
+                var boundary = headerContentType.Parameters.FirstOrDefault(p => p.Name == "boundary")?.Value;
+                var normalizedBoundary = boundary.Replace("\"", string.Empty);
+                return requestContent.Replace(normalizedBoundary, string.Empty);
+            }
+
+            return requestContent;
         }
 
         private static string MD5Hash(string input)

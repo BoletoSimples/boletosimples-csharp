@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using System.Net;
 using BoletoSimplesApiClient.UnitTests.Json;
+using System;
+using System.Collections.Generic;
 
 namespace BoletoSimplesApiClient.IntegratedTests
 {
@@ -61,8 +63,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Assert
             Assert.That(response.IsSuccess, Is.True);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
-            Assert.That(successResponse, Is.InstanceOf<BankBilletAccount>());
-            successResponse.Should().Equals(new BankBilletAccount());
+            Assert.That(successResponse, Is.Null);
         }
 
         [Test]

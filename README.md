@@ -30,7 +30,7 @@ No visual Studio > Abrir o **Package Manager Console** e digitar o comando abaix
     <!--BoletoSimples token de acesso (http://api.boletosimples.com.br/authentication/token/) -->
     <add key="boletosimple-api-token" value="Seu Token de acessos" />
 
-    <!--BoletoSimples dados de acesso para Oauth2 (http://api.boletosimples.com.br/authentication/oauth2/) 
+    <!--BoletoSimples dados de acesso para Oauth2 (http://api.boletosimples.com.br/authentication/oauth2/)
         Não suportado na versão atual do client -->
     <add key="boletosimple-api-return-url" value="" />
     <add key="boletosimple-api-client-id" value="" />
@@ -67,12 +67,12 @@ public class AnyClass
         {
            // pagedResponse contém a resposta de erro e o conteudo no caso de sucesso
            var pagedResponse = await client.BankBilletAccounts.GetAsync(0, 250).ConfigureAwait(false);
-           
+
            // Aqui é apenas a resposta de sucesso sem as informações adicionais da resposta anterior
            var pagedContent = await pagedResponse.GetSuccessResponseAsync().ConfigureAwait(false);
         }
     }
-	
+
     // Obter as informação do usuário
     public async Task GetUserInfo()
     {
@@ -108,6 +108,8 @@ public class AnyClass
 * **Informações do Usuário**
 * **Carteiras de Clientes**
 * **Boletos**
+* **Arquivo CNAB - Remessa**
+* **Arquivo CNAB - Retorno**
 
 --------------------
 ### Outras Informações
@@ -123,5 +125,4 @@ Através do [issue tracker do GitHub](http://github.com/BoletoSimples/boletosimp
 
 [**Rodrigo Couto**](http://github.com/rscouto) trabalhando na [Plataforma Edux](http://www.sistemaedux.com.br)
 
-
-
+### PRs são muito bem-vindas! :)

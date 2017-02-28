@@ -3,8 +3,11 @@ using System;
 
 namespace BoletoSimplesApiClient.APIs.BankBilletAccounts.Moodels
 {
+    /// <summary>
+    /// Classe que representa a carteira
+    /// </summary>
     [JsonRoot("bank_billet_account")]
-    public class BankBilletAccount
+    public sealed class BankBilletAccount
     {
         public int Id { get; set; }
         public string BankContractSlug { get; set; }

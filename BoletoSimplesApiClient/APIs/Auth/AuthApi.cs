@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace BoletoSimplesApiClient.APIs.Auth
 {
-    public class AuthApi
+    /// <summary>
+    /// Api que obtem informações do usuário logado
+    /// </summary>
+    public sealed class AuthApi
     {
         private readonly BoletoSimplesClient _client;
         private readonly HttpClientRequestBuilder _requestBuilder;

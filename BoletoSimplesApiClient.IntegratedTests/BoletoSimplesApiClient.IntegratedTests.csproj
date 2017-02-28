@@ -191,13 +191,17 @@
     <Compile Include="BankBilletAccountsApiIntegratedTests.cs" />
     <Compile Include="BankBilletsApiIntegratedTests.cs" />
     <Compile Include="ClientConnectionIntegratedTests.cs" />
+    <Compile Include="DischargeApiIntegratedTests.cs" />
     <Compile Include="PagedResponseIntegratedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemittanceApiIntegratedTests.cs" />
     <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BoletoSimplesApiClient.UnitTests\BoletoSimplesApiClient.UnitTests.csproj">

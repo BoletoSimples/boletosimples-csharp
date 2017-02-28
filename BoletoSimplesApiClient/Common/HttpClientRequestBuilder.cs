@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.IO;
 
 namespace BoletoSimplesApiClient.Common
 {
@@ -61,6 +62,11 @@ namespace BoletoSimplesApiClient.Common
             return this;
         }
 
+        /// <summary>
+        /// Adiciona objeto como conteudo, não deve ser utilizado para arquivos
+        /// </summary>
+        /// <param name="content">objeto representando o modelo a ser enviado</param>
+        /// <returns></returns>
         public HttpClientRequestBuilder AndOptionalContent(object content)
         {
             JsonConvert.DefaultSettings = () => _jsonDefaultSettings;
@@ -74,6 +80,21 @@ namespace BoletoSimplesApiClient.Common
             var stringContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
             return new HttpClientRequestBuilder(_client, _uri, _method, stringContent, _additionalHeaders);
+        }
+
+        /// <summary>
+        /// Representa o arquivo a ser enviado ao servidor
+        /// </summary>
+        /// <param name="paramKey">nome do parâmetro que representa o arquivo</param>
+        /// <param name="fileName">nome do arquivo</param>
+        /// <param name="paramFileStream">stream do conteudo arquivo</param>
+        /// <returns></returns>
+        public HttpClientRequestBuilder AppendFileContent(string paramKey, string fileName, Stream paramFileStream)
+        {
+            HttpContent fileStreamContent = new StreamContent(paramFileStream);
+            var content = new MultipartFormDataContent();
+            content.Add(fileStreamContent, paramKey, fileName);
+            return new HttpClientRequestBuilder(_client, _uri, _method, content, _additionalHeaders);
         }
 
         public HttpClientRequestBuilder AditionalHeaders(Dictionary<string, string> additionalHeaders)
@@ -102,9 +123,11 @@ namespace BoletoSimplesApiClient.Common
                 return baseUri;
             }
 
-            var finalUri = resourcePath.First().Equals('/') ? $"{baseUri.ToString()}{resourcePath}" : $"{baseUri.ToString()}/{resourcePath}";
-
-            return new Uri(finalUri);
+            var baseUrl = baseUri.AbsoluteUri;
+            var concatenatedUrls = resourcePath.First() == '/' || baseUrl.Last() == '/' ?
+                                                $"{baseUrl}{resourcePath}" :
+                                                $"{baseUrl}/{resourcePath}";
+            return new Uri(concatenatedUrls);
         }
 
         private AuthenticationHeaderValue GetAuthHeader()
