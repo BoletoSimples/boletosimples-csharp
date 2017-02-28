@@ -13,15 +13,6 @@ namespace BoletoSimplesApiClient.IntegratedTests
     [TestFixture]
     public class DischargeApiIntegratedTests : IntegratedTestBase
     {
-        private Discharge Content { get; set; }
-
-        [SetUp]
-        public void PrepareTest()
-        {
-            Content = JsonConvert.DeserializeObject<Discharge>(JsonConstants.Discharge);
-        }
-
-
         [Test]
         public async Task Create_discharge_file_with_success()
         {
@@ -79,7 +70,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
 
             Assert.That(payOff.IsSuccess, Is.True);
             Assert.That(payOff.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
-            payOffSucessResponse.ShouldBeEquivalentTo(new Discharge());
+            Assert.That(payOffSucessResponse, Is.Null);
         }
     }
 }
