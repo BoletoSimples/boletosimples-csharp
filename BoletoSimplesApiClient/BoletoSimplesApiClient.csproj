@@ -79,6 +79,8 @@
     <Compile Include="APIs\BankBillets\RequestMessages\Duplicate.cs" />
     <Compile Include="APIs\Discharges\DischargesApi.cs" />
     <Compile Include="APIs\Discharges\Models\Discharge.cs" />
+    <Compile Include="APIs\Remittances\Models\Remittance.cs" />
+    <Compile Include="APIs\Remittances\RemittancesApi.cs" />
     <Compile Include="APIs\Users\Models\UserInfo.cs" />
     <Compile Include="APIs\Constants.cs" />
     <Compile Include="BoletoSimplesClient.cs" />
@@ -104,14 +106,10 @@
     <Folder Include="APIs\CustomerSubscriptions\ResponseMessages\" />
     <Folder Include="APIs\Customers\RequestMessages\" />
     <Folder Include="APIs\Customers\ResponseMessages\" />
-    <Folder Include="APIs\Discharges\RequestMessages\" />
-    <Folder Include="APIs\Discharges\ResponseMessages\" />
     <Folder Include="APIs\Events\RequestMessages\" />
     <Folder Include="APIs\Events\ResponseMessages\" />
     <Folder Include="APIs\Installments\RequestMessages\" />
     <Folder Include="APIs\Installments\ResponseMessages\" />
-    <Folder Include="APIs\Remittances\RequestMessages\" />
-    <Folder Include="APIs\Remittances\ResponseMessages\" />
     <Folder Include="APIs\WebhookDeliveries\RequestMessages\" />
     <Folder Include="APIs\WebhookDeliveries\ResponseMessages\" />
     <Folder Include="APIs\Webhooks\RequestMessages\" />

@@ -2,6 +2,7 @@
 using BoletoSimplesApiClient.APIs.BankBilletAccounts;
 using BoletoSimplesApiClient.APIs.BankBillets;
 using BoletoSimplesApiClient.APIs.Discharges;
+using BoletoSimplesApiClient.APIs.Remittances;
 using BoletoSimplesApiClient.Common;
 using System;
 using System.Net.Http;
@@ -36,6 +37,11 @@ namespace BoletoSimplesApiClient
         /// DischargesApi Api de envio de arquivos CNAB de retorno
         /// </summary>
         public readonly DischargesApi DischargesApi;
+
+        /// <summary>
+        /// DischargesApi Api de envio de arquivos CNAB de remessa
+        /// </summary>
+        public readonly RemittancesApi RemittanceApi;
 
         private readonly HttpClient _client;
 

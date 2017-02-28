@@ -23,5 +23,6 @@ namespace BoletoSimplesApiClient.UnitTests.Json
                                             'paid_agency': 'Agência de Pagamento'}";
 
         public const string Discharge = @"{'id':132,'filename':'arquivo-test.ret','processed_at':null,'created_via_api':true,'status':'unprocessed','bank_billet_account_id':null,'created_via_integration':null}";
+        public const string Remittance = @"{ 'filename' : '1605061.REM', 'created_via_api' : true, 'status' : 'processed','bank_billet_account_id' : 1, 'created_at' : '2016-05-06', 'processed_at' : '2016-05-06', 'url' : 'https://sandbox.boletosimples.com.br/remessas/06tt1bcc3f6132720866b53a57c76de4/download', 'id' : 1, 'bank_billet_ids' : [1] }";
     }
 }
