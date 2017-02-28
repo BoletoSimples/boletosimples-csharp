@@ -12,11 +12,15 @@ namespace BoletoSimplesApiClient.UnitTests.Common
     [TestFixture]
     public class HttpRequestBuilderUnitTest
     {
-        private readonly HttpClientRequestBuilder Builder;
+        private  HttpClientRequestBuilder Builder;
 
-        public HttpRequestBuilderUnitTest()
+        [OneTimeSetUp]
+        public void InitTests()
         {
-            var client = new BoletoSimplesClient();
+            var connection = new ClientConnection(@"https://sandbox.boletosimples.com.br/api", "v1",
+                "83ccd60a3bde2f2ea5dbab40bd2acaf2d7aa3bc769eb5a9bcb55ceaf0f9c3c3c",
+                "Meu e-Commerce (meuecommerce@example.com)", null, null, null);
+            var client = new BoletoSimplesClient(connection);
             Builder = new HttpClientRequestBuilder(client);
         }
 
