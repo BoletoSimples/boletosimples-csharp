@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace BoletoSimplesApiClient.APIs.BankBillets
 {
-    public class BankBilletsApi
+    /// <summary>
+    /// Api de boletos
+    /// </summary>
+    public sealed class BankBilletsApi
     {
         private readonly BoletoSimplesClient _client;
         private readonly HttpClientRequestBuilder _requestBuilder;
@@ -57,7 +60,7 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         /// </summary>
         /// <param name="pageNumber">Numero da página</param>
         /// <param name="maxPerPage">Quantidade máxima por pagina, máximo e default são 250 items por página</param>
-        /// <returns>Um resultado paginado contendo uma lista de carteiras</returns>
+        /// <returns>Um resultado paginado contendo uma lista de boletos</returns>
         /// <exception cref="ArgumentException">Parametro máx per page superior ao limite de 250 itens</exception>
         /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billets/#listar-boletos"/>
         public async Task<PagedApiResponse<BankBillet>> GetAsync(int pageNumber, int maxPerPage = 250)

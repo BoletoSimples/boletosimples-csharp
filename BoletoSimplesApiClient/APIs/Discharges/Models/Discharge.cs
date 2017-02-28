@@ -7,7 +7,7 @@ namespace BoletoSimplesApiClient.APIs.Discharges.Models
     /// <summary>
     /// Modelo que repesenta o arquivo de retorno
     /// </summary>
-    public class Discharge
+    public sealed class Discharge
     {
         /// <summary>
         /// ID do CNAB

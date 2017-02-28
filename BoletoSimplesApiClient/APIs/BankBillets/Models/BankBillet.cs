@@ -10,7 +10,7 @@ namespace BoletoSimplesApiClient.APIs.BankBillets.Models
     /// Classe que representa o boleto
     /// </summary>
     [JsonRoot("bank_billet")]
-    public class BankBillet
+    public sealed class BankBillet
     {
         public int Id { get; set; }
         public DateTime ExpireAt { get; set; }
@@ -84,5 +84,6 @@ namespace BoletoSimplesApiClient.APIs.BankBillets.Models
         public DateTime? UpdatedAt { get; set; }
         public string PaidBank { get; set; }
         public string PaidAgency { get; set; }
+        public string BarcodeImageUrl { get { return $"{ShortenUrl}/barcode.png"; } }
     }
 }

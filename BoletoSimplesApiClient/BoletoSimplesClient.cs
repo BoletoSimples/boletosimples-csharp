@@ -67,9 +67,10 @@ namespace BoletoSimplesApiClient
             BankBilletAccounts = new BankBilletAccountsApi(this);
             BankBillets = new BankBilletsApi(this);
             DischargesApi = new DischargesApi(this);
+            RemittanceApi = new RemittancesApi(this);
         }
 
-        public async Task<ApiResponse<T>> SendAsync<T>(HttpRequestMessage request) where T : new()
+        public async Task<ApiResponse<T>> SendAsync<T>(HttpRequestMessage request)
         {
             var response = await _client.SendAsync(request, default(CancellationToken));
             request.Dispose();
@@ -77,7 +78,7 @@ namespace BoletoSimplesApiClient
             return new ApiResponse<T>(response);
         }
 
-        public async Task<PagedApiResponse<T>> SendPagedAsync<T>(HttpRequestMessage request) where T : new()
+        public async Task<PagedApiResponse<T>> SendPagedAsync<T>(HttpRequestMessage request)
         {
             var response = await _client.SendAsync(request, default(CancellationToken));
             request.Dispose();

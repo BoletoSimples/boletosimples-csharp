@@ -3,14 +3,15 @@ using BoletoSimplesApiClient.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BoletoSimplesApiClient.APIs.Discharges
 {
-    public class DischargesApi
+    /// <summary>
+    /// Api de arquivo de Retorno
+    /// </summary>
+    public sealed class DischargesApi
     {
         private readonly BoletoSimplesClient _client;
         private readonly HttpClientRequestBuilder _requestBuilder;
@@ -26,7 +27,7 @@ namespace BoletoSimplesApiClient.APIs.Discharges
         /// Enviar CNAB
         /// </summary>
         /// <param name="fileName">nome do arquivo</param>
-        /// <param name="file">Stream como conteudo</param>
+        /// <param name="file">conteudo do arquivo</param>
         /// <see cref="http://api.boletosimples.com.br/reference/v1/discharges/#enviar-cnab"/>
         /// <returns>Modelo que representa o arquivo de retorno</returns>
         public async Task<ApiResponse<Discharge>> PostAsync(string fileName, Stream file)
@@ -55,11 +56,11 @@ namespace BoletoSimplesApiClient.APIs.Discharges
         }
 
         /// <summary>
-        /// Listar CNABs
+        /// Listar CNABs(Retorno)
         /// </summary>
         /// <param name="pageNumber">Numero da página</param>
         /// <param name="maxPerPage">Quantidade máxima por pagina, máximo e default são 250 items por página</param>
-        /// <returns>Um resultado paginado contendo uma lista de carteiras</returns>
+        /// <returns>Um resultado paginado contendo uma lista de arquivo de retorno</returns>
         /// <exception cref="ArgumentException">Parametro máx per page superior ao limite de 250 itens</exception>
         /// <see cref="http://api.boletosimples.com.br/reference/v1/discharges/#listar-cnabs"/>
         /// <returns>Modelo que representa o arquivo de retorno</returns>
