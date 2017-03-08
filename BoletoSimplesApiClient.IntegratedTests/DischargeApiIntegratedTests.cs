@@ -53,6 +53,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             var getResponse = await Client.DischargesApi.GetAsync(1, 250).ConfigureAwait(false);
             var getSucessResponse = await getResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
+            // Assert
             Assert.That(getResponse.IsSuccess, Is.True);
             Assert.That(getSucessResponse.Items, Is.Not.Empty);
         }
@@ -65,12 +66,13 @@ namespace BoletoSimplesApiClient.IntegratedTests
             var getSucessResponse = await getResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Act
-            var payOff = await Client.DischargesApi.PayOffAsync(getSucessResponse.Items.First().Id).ConfigureAwait(false);
-            var payOffSucessResponse = await payOff.GetSuccessResponseAsync().ConfigureAwait(false);
+            var payOffResponse = await Client.DischargesApi.PayOffAsync(getSucessResponse.Items.First().Id).ConfigureAwait(false);
+            var content = await payOffResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            Assert.That(payOff.IsSuccess, Is.True);
-            Assert.That(payOff.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
-            Assert.That(payOffSucessResponse, Is.Null);
+            // Assert
+            Assert.That(payOffResponse.IsSuccessStatusCode, Is.True);
+            Assert.That(payOffResponse.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
+            Assert.That(content, Is.Empty);
         }
     }
 }

@@ -86,16 +86,16 @@ namespace BoletoSimplesApiClient.APIs.Discharges
         /// Quitar boletos em arquivo CNAB
         /// É necessário já ter enviado o CNAB. Todos os boletos que forem identificados dentro do CNAB serão marcados como PAGO e os Webhooks serão disparados.
         /// </summary>
-        /// <param name="id">identificador do arquivo CNAB</param>
+        /// <param name="id">Identificador do arquivo CNAB</param>
         /// <see cref="http://api.boletosimples.com.br/reference/v1/discharges/#quitar-boletos"/>
-        /// <returns>Modelo que representa o arquivo de retorno</returns>
-        public async Task<ApiResponse<Discharge>> PayOffAsync(int id)
+        /// <returns>HttpResponseMessage with HttpStatusCode 204 (NO Content)</returns>
+        public async Task<HttpResponseMessage> PayOffAsync(int id)
         {
             var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{DISCHARGE_API}/{id}/pay_off")
                                          .WithMethod(HttpMethod.Put)
                                          .Build();
 
-            return await _client.SendAsync<Discharge>(request);
+            return await _client.SendAsync(request);
         }
     }
 }

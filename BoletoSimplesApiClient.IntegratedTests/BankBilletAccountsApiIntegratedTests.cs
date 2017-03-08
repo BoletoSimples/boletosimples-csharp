@@ -8,6 +8,7 @@ using System.Net;
 using BoletoSimplesApiClient.UnitTests.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace BoletoSimplesApiClient.IntegratedTests
 {
@@ -45,8 +46,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Update_bank_account_billets_by_id_with_success()
         {
             // Arrange
-            ApiResponse<BankBilletAccount> response;
-            BankBilletAccount successResponse;
+            HttpResponseMessage response;
             Content.BeneficiaryName = "Updatable-Beneficiary-Name";
 
             // Act
@@ -57,13 +57,13 @@ namespace BoletoSimplesApiClient.IntegratedTests
             response = await Client.BankBilletAccounts.PutAsync(createContent.Id, createContent)
                                                       .ConfigureAwait(false);
 
-            successResponse = await response.GetSuccessResponseAsync()
-                                            .ConfigureAwait(false);
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
 
             // Assert
-            Assert.That(response.IsSuccess, Is.True);
+            Assert.That(response.IsSuccessStatusCode, Is.True);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
-            Assert.That(successResponse, Is.Null);
+            Assert.That(content, Is.Empty);
         }
 
         [Test]
@@ -94,8 +94,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Request_validate_bank_account_billets_by_id_with_success()
         {
             // Arrange
-            ApiResponse<BankBilletAccount> response;
-            BankBilletAccount successResponse;
+            HttpResponseMessage response;
             Content.BeneficiaryName = "Validate-Beneficiary-Name";
             var createResponse = await Client.BankBilletAccounts.PostAsync(Content).ConfigureAwait(false);
             var createContent = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
@@ -104,12 +103,12 @@ namespace BoletoSimplesApiClient.IntegratedTests
             response = await Client.BankBilletAccounts.ValidateAsync(createContent.Id, 1.99m)
                                                       .ConfigureAwait(false);
 
-            successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             // Assert
-            Assert.That(response.IsSuccess, Is.True);
+            Assert.That(response.IsSuccessStatusCode, Is.True);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
-            successResponse.Should().Equals(new BankBilletAccount());
+            Assert.That(response, Is.Empty);
         }
 
         [Test]

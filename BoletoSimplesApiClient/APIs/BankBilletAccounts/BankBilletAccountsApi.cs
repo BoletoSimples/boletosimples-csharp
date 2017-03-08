@@ -39,17 +39,17 @@ namespace BoletoSimplesApiClient.APIs.BankBilletAccounts
         /// <summary>
         /// Atualizar informações de uma carteira de cliente
         /// </summary>
-        /// <param name="bankBilletAccountData">dados da conta</param>
+        /// <param name="bankBilletAccountData">Dados da carteira</param>
         /// <param name="id">Identifiador da carteira</param>
-        /// <returns>Conta criada com sucesso</returns>
-        public async Task<ApiResponse<BankBilletAccount>> PutAsync(int id, BankBilletAccount bankBilletAccountData)
+        /// <returns>HttpResponseMessage with HttpStatusCode 204 (NO Content)</returns>
+        public async Task<HttpResponseMessage> PutAsync(int id, BankBilletAccount bankBilletAccountData)
         {
             var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_ACCOUNTS_API}/{id}")
                                          .WithMethod(HttpMethod.Put)
                                          .AndOptionalContent(bankBilletAccountData)
                                          .Build();
 
-            return await _client.SendAsync<BankBilletAccount>(request);
+            return await _client.SendAsync(request);
         }
 
         /// <summary>
@@ -110,8 +110,8 @@ namespace BoletoSimplesApiClient.APIs.BankBilletAccounts
         /// <param name="id">Identifiador da carteira</param>
         /// <param name="homologationAmount">O valor em reais utilizado na homologação</param>
         /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billet_accounts/#validar-carteira-de-cobrana"/>
-        /// <returns></returns>
-        public async Task<ApiResponse<BankBilletAccount>> ValidateAsync(int id, decimal homologationAmount)
+        /// <returns>HttpResponseMessage with HttpStatusCode 204 (NO Content)</returns>
+        public async Task<HttpResponseMessage> ValidateAsync(int id, decimal homologationAmount)
         {
             var convertedDecimal = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", homologationAmount);
             var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_ACCOUNTS_API}/{id}/validate")
@@ -119,7 +119,7 @@ namespace BoletoSimplesApiClient.APIs.BankBilletAccounts
                                          .AndOptionalContent(new { HomologationAmount = convertedDecimal })
                                          .Build();
 
-            return await _client.SendAsync<BankBilletAccount>(request);
+            return await _client.SendAsync(request);
         }
     }
 }

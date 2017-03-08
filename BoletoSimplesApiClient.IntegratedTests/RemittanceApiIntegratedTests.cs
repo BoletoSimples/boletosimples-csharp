@@ -80,13 +80,13 @@ namespace BoletoSimplesApiClient.IntegratedTests
             var sucessResponseList = await responseList.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Act
-            var deleteResponse = await Client.RemittanceApi.DeleteAsync(sucessResponseList.Id).ConfigureAwait(false);
-            var deleteSuccessResponse = await deleteResponse.GetSuccessResponseAsync().ConfigureAwait(false);
+            var deleteSuccessResponse = await Client.RemittanceApi.DeleteAsync(sucessResponseList.Id).ConfigureAwait(false);
+            var content = await deleteSuccessResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             // Assert
-            Assert.That(deleteResponse.IsSuccess, Is.True);
-            Assert.That(deleteResponse.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
-            Assert.That(deleteSuccessResponse, Is.Null);
+            Assert.That(deleteSuccessResponse.IsSuccessStatusCode, Is.True);
+            Assert.That(deleteSuccessResponse.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
+            Assert.That(content, Is.Empty);
         }
     }
 }

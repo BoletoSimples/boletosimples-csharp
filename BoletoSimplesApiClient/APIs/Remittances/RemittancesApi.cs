@@ -85,14 +85,14 @@ namespace BoletoSimplesApiClient.APIs.Remittances
         /// </summary>
         /// <param name="id">identificador do arquivo</param>
         /// <see cref="http://api.boletosimples.com.br/reference/v1/remittances/#apagar-cnab"/>
-        /// <returns>Modelo que representa o arquivo de remessa</returns>
-        public async Task<ApiResponse<Remittance>> DeleteAsync(int id)
+        /// <returns>HttpResponseMessage with HttpStatusCode 204 (NO Content)</returns>
+        public async Task<HttpResponseMessage> DeleteAsync(int id)
         {
             var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{REMITTANCE_API}/{id}")
                                          .WithMethod(HttpMethod.Delete)
                                          .Build();
 
-            return await _client.SendAsync<Remittance>(request);
+            return await _client.SendAsync(request);
         }
     }
 }

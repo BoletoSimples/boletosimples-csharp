@@ -97,7 +97,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             var afterCancelSuccessResponse = await afterCancelResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
-            Assert.That(cancelResponse.IsSuccess, Is.True);
+            Assert.That(cancelResponse.IsSuccessStatusCode, Is.True);
             Assert.That(cancelResponse.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
             Assert.That(successCreateResponse.Status, Is.Not.EqualTo(afterCancelSuccessResponse.Status));
         }

@@ -76,7 +76,7 @@ namespace BoletoSimplesApiClient
             RemittanceApi = new RemittancesApi(this);
         }
 
-        public async Task<ApiResponse<T>> SendAsync<T>(HttpRequestMessage request)
+        internal async Task<ApiResponse<T>> SendAsync<T>(HttpRequestMessage request)
         {
             var response = await _client.SendAsync(request, default(CancellationToken));
             request.Dispose();
@@ -84,12 +84,20 @@ namespace BoletoSimplesApiClient
             return new ApiResponse<T>(response);
         }
 
-        public async Task<PagedApiResponse<T>> SendPagedAsync<T>(HttpRequestMessage request)
+        internal async Task<PagedApiResponse<T>> SendPagedAsync<T>(HttpRequestMessage request)
         {
             var response = await _client.SendAsync(request, default(CancellationToken));
             request.Dispose();
 
             return new PagedApiResponse<T>(response);
+        }
+
+        internal async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+        {
+            var response = await _client.SendAsync(request, default(CancellationToken));
+            request.Dispose();
+
+            return response;
         }
 
         public void Dispose()

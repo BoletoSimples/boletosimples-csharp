@@ -86,15 +86,15 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         /// Você pode cancelar boletos nos status de Aberto(opened) ou Vencido(overdue)
         /// </summary>
         /// <param name="id">Identificador do boleto</param>
-        /// <returns>Boleto criado com sucesso</returns>
+        /// <returns>HttpResponseMessage with HttpStatusCode 204 (NO Content)</returns>
         /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billets/#cancelar-boleto"/>
-        public async Task<ApiResponse<BankBillet>> CancelAsync(int id)
+        public async Task<HttpResponseMessage> CancelAsync(int id)
         {
             var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/{id}/cancel")
                                          .WithMethod(HttpMethod.Put)
                                          .Build();
 
-            return await _client.SendAsync<BankBillet>(request);
+            return await _client.SendAsync(request);
         }
 
         /// <summary>
