@@ -7,6 +7,7 @@ using FluentAssertions;
 using BoletoSimplesApiClient.APIs.BankBilletAccounts.Moodels;
 using BoletoSimplesApiClient.APIs.Discharges.Models;
 using BoletoSimplesApiClient.APIs.Remittances.Models;
+using BoletoSimplesApiClient.APIs.Installments.Models;
 
 namespace BoletoSimplesApiClient.UnitTests.Json
 {
@@ -95,6 +96,25 @@ namespace BoletoSimplesApiClient.UnitTests.Json
 
             // Other Asserts
             firstRemittance.ShouldBeEquivalentTo(secondRemittance);
+        }
+
+        [Test]
+        public async Task Given_input_json_of_model_Installments_should_be_serialize_and_desesialize_right()
+        {
+            // Arrange
+            Installment firstInstallment = null;
+            Installment secondInstallment = null;
+
+            // Act && Assert
+            Assert.DoesNotThrowAsync(async () =>
+            {
+                firstInstallment = await Task.FromResult(JsonConvert.DeserializeObject<Installment>(JsonConstants.Installment)).ConfigureAwait(false);
+                var bankBilletJson = await Task.FromResult(JsonConvert.SerializeObject(firstInstallment)).ConfigureAwait(false);
+                secondInstallment = await Task.FromResult(JsonConvert.DeserializeObject<Installment>(bankBilletJson)).ConfigureAwait(false);
+            });
+
+            // Other Asserts
+            firstInstallment.ShouldBeEquivalentTo(secondInstallment);
         }
     }
 }

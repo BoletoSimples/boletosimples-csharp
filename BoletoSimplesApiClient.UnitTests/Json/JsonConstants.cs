@@ -24,5 +24,6 @@ namespace BoletoSimplesApiClient.UnitTests.Json
 
         public const string Discharge = @"{'id':132,'filename':'arquivo-test.ret','processed_at':null,'created_via_api':true,'status':'unprocessed','bank_billet_account_id':null,'created_via_integration':null}";
         public const string Remittance = @"{ 'filename' : '1605061.REM', 'created_via_api' : true, 'status' : 'processed','bank_billet_account_id' : 1, 'created_at' : '2016-05-06', 'processed_at' : '2016-05-06', 'url' : 'https://sandbox.boletosimples.com.br/remessas/06tt1bcc3f6132720866b53a57c76de4/download', 'id' : 1, 'bank_billet_ids' : [1] }";
+        public const string Installment = @"{'id':1,'amount':1120.4,'cycle':'monthly','start_at':'2016-09-15','end_at':'2016-11-16','instructions':null,'customer_id':11,'description':'Hospedagem','created_at':'2016-08-15','updated_at':'2016-08-15','created_via_api':true,'total':3,'bank_billet_account_id':12,'status':'created','fine_for_delay': 0.0,'late_payment_interest':0.0}";
     }
 }

@@ -2,6 +2,7 @@
 using BoletoSimplesApiClient.APIs.BankBilletAccounts;
 using BoletoSimplesApiClient.APIs.BankBillets;
 using BoletoSimplesApiClient.APIs.Discharges;
+using BoletoSimplesApiClient.APIs.Installments;
 using BoletoSimplesApiClient.APIs.Remittances;
 using BoletoSimplesApiClient.Common;
 using System;
@@ -43,6 +44,11 @@ namespace BoletoSimplesApiClient
         /// </summary>
         public readonly RemittancesApi Remittances;
 
+        /// <summary>
+        /// DischargesApi Api de envio de arquivos CNAB de remessa
+        /// </summary>
+        public readonly InstallmentsApi Installments;
+
         private readonly HttpClient _client;
 
         /// <summary>
@@ -74,6 +80,7 @@ namespace BoletoSimplesApiClient
             BankBillets = new BankBilletsApi(this);
             Discharges = new DischargesApi(this);
             Remittances = new RemittancesApi(this);
+            Installments = new InstallmentsApi(this);
         }
 
         internal async Task<ApiResponse<T>> SendAsync<T>(HttpRequestMessage request)

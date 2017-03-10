@@ -192,6 +192,7 @@
     <Compile Include="BankBilletsApiIntegratedTests.cs" />
     <Compile Include="ClientConnectionIntegratedTests.cs" />
     <Compile Include="DischargeApiIntegratedTests.cs" />
+    <Compile Include="InstallmentApiIntegratedTests.cs" />
     <Compile Include="PagedResponseIntegratedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemittanceApiIntegratedTests.cs" />
