@@ -32,7 +32,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             var remittance = new Remittance(337);
 
             // Act
-            var response = await Client.RemittanceApi.PostAsync(remittance).ConfigureAwait(false);
+            var response = await Client.Remittances.PostAsync(remittance).ConfigureAwait(false);
             var sucessResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
@@ -46,11 +46,11 @@ namespace BoletoSimplesApiClient.IntegratedTests
         {
             // Arrange
             var remittance = new Remittance(337);
-            var responseCreate = await Client.RemittanceApi.PostAsync(remittance).ConfigureAwait(false);
+            var responseCreate = await Client.Remittances.PostAsync(remittance).ConfigureAwait(false);
             var sucessCreateResponse = await responseCreate.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Act
-            var response = await Client.RemittanceApi.GetAsync(sucessCreateResponse.Id).ConfigureAwait(false);
+            var response = await Client.Remittances.GetAsync(sucessCreateResponse.Id).ConfigureAwait(false);
             var sucessResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
@@ -62,7 +62,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task List_remittances_with_sucess()
         {
             // Arrange
-            var response = await Client.RemittanceApi.GetAsync(1, 250).ConfigureAwait(false);
+            var response = await Client.Remittances.GetAsync(1, 250).ConfigureAwait(false);
 
             // Act
             var sucessResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
@@ -76,11 +76,11 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Delete_remittances_with_sucess()
         {
             // Arrange
-            var responseList = await Client.RemittanceApi.GetAsync(457).ConfigureAwait(false);
+            var responseList = await Client.Remittances.GetAsync(457).ConfigureAwait(false);
             var sucessResponseList = await responseList.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Act
-            var deleteSuccessResponse = await Client.RemittanceApi.DeleteAsync(sucessResponseList.Id).ConfigureAwait(false);
+            var deleteSuccessResponse = await Client.Remittances.DeleteAsync(sucessResponseList.Id).ConfigureAwait(false);
             var content = await deleteSuccessResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             // Assert

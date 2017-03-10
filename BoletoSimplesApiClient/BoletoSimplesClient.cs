@@ -36,12 +36,12 @@ namespace BoletoSimplesApiClient
         /// <summary>
         /// DischargesApi Api de envio de arquivos CNAB de retorno
         /// </summary>
-        public readonly DischargesApi DischargesApi;
+        public readonly DischargesApi Discharges;
 
         /// <summary>
         /// DischargesApi Api de envio de arquivos CNAB de remessa
         /// </summary>
-        public readonly RemittancesApi RemittanceApi;
+        public readonly RemittancesApi Remittances;
 
         private readonly HttpClient _client;
 
@@ -72,8 +72,8 @@ namespace BoletoSimplesApiClient
             Auth = new AuthApi(this);
             BankBilletAccounts = new BankBilletAccountsApi(this);
             BankBillets = new BankBilletsApi(this);
-            DischargesApi = new DischargesApi(this);
-            RemittanceApi = new RemittancesApi(this);
+            Discharges = new DischargesApi(this);
+            Remittances = new RemittancesApi(this);
         }
 
         internal async Task<ApiResponse<T>> SendAsync<T>(HttpRequestMessage request)
