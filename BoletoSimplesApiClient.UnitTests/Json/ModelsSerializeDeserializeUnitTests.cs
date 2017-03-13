@@ -8,6 +8,7 @@ using BoletoSimplesApiClient.APIs.BankBilletAccounts.Moodels;
 using BoletoSimplesApiClient.APIs.Discharges.Models;
 using BoletoSimplesApiClient.APIs.Remittances.Models;
 using BoletoSimplesApiClient.APIs.Installments.Models;
+using BoletoSimplesApiClient.APIs.CustomerSubscriptions.Models;
 
 namespace BoletoSimplesApiClient.UnitTests.Json
 {
@@ -71,8 +72,8 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             Assert.DoesNotThrowAsync(async () =>
             {
                 firstDischarge = await Task.FromResult(JsonConvert.DeserializeObject<Discharge>(JsonConstants.Discharge)).ConfigureAwait(false);
-                var bankBilletJson = await Task.FromResult(JsonConvert.SerializeObject(firstDischarge)).ConfigureAwait(false);
-                secondDischarge = await Task.FromResult(JsonConvert.DeserializeObject<Discharge>(bankBilletJson)).ConfigureAwait(false);
+                var dischargesJson = await Task.FromResult(JsonConvert.SerializeObject(firstDischarge)).ConfigureAwait(false);
+                secondDischarge = await Task.FromResult(JsonConvert.DeserializeObject<Discharge>(dischargesJson)).ConfigureAwait(false);
             });
 
             // Other Asserts
@@ -90,8 +91,8 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             Assert.DoesNotThrowAsync(async () =>
             {
                 firstRemittance = await Task.FromResult(JsonConvert.DeserializeObject<Remittance>(JsonConstants.Remittance)).ConfigureAwait(false);
-                var bankBilletJson = await Task.FromResult(JsonConvert.SerializeObject(firstRemittance)).ConfigureAwait(false);
-                secondRemittance = await Task.FromResult(JsonConvert.DeserializeObject<Remittance>(bankBilletJson)).ConfigureAwait(false);
+                var remittancesJson = await Task.FromResult(JsonConvert.SerializeObject(firstRemittance)).ConfigureAwait(false);
+                secondRemittance = await Task.FromResult(JsonConvert.DeserializeObject<Remittance>(remittancesJson)).ConfigureAwait(false);
             });
 
             // Other Asserts
@@ -109,12 +110,37 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             Assert.DoesNotThrowAsync(async () =>
             {
                 firstInstallment = await Task.FromResult(JsonConvert.DeserializeObject<Installment>(JsonConstants.Installment)).ConfigureAwait(false);
-                var bankBilletJson = await Task.FromResult(JsonConvert.SerializeObject(firstInstallment)).ConfigureAwait(false);
-                secondInstallment = await Task.FromResult(JsonConvert.DeserializeObject<Installment>(bankBilletJson)).ConfigureAwait(false);
+                var installmentsJson = await Task.FromResult(JsonConvert.SerializeObject(firstInstallment)).ConfigureAwait(false);
+                secondInstallment = await Task.FromResult(JsonConvert.DeserializeObject<Installment>(installmentsJson)).ConfigureAwait(false);
             });
 
             // Other Asserts
             firstInstallment.ShouldBeEquivalentTo(secondInstallment);
+        }
+
+
+        [Test]
+        public async Task Given_input_json_of_model_CustomerSubscription_should_be_serialize_and_desesialize_right()
+        {
+            // Arrange
+            CustomerSubscription firstCustomerSubscription = null;
+            CustomerSubscription secondCustomerSubscription = null;
+
+            // Act && Assert
+            Assert.DoesNotThrowAsync(async () =>
+            {
+                firstCustomerSubscription = await Task.FromResult(JsonConvert.DeserializeObject<CustomerSubscription>(JsonConstants.CurstomerSubscription))
+                                                      .ConfigureAwait(false);
+
+                var customerSunbscriptionJson = await Task.FromResult(JsonConvert.SerializeObject(firstCustomerSubscription))
+                                                          .ConfigureAwait(false);
+
+                secondCustomerSubscription = await Task.FromResult(JsonConvert.DeserializeObject<CustomerSubscription>(customerSunbscriptionJson))
+                                                       .ConfigureAwait(false);
+            });
+
+            // Other Asserts
+            firstCustomerSubscription.ShouldBeEquivalentTo(secondCustomerSubscription);
         }
     }
 }

@@ -77,6 +77,8 @@
     <Compile Include="APIs\BankBillets\BankBilletsConstants.cs" />
     <Compile Include="APIs\BankBillets\Models\BankBillet.cs" />
     <Compile Include="APIs\BankBillets\RequestMessages\Duplicate.cs" />
+    <Compile Include="APIs\CustomerSubscriptions\CustomerSubscriptionApi.cs" />
+    <Compile Include="APIs\CustomerSubscriptions\Models\CustomerSubscription.cs" />
     <Compile Include="APIs\Discharges\DischargesApi.cs" />
     <Compile Include="APIs\Discharges\Models\Discharge.cs" />
     <Compile Include="APIs\Installments\InstallmentsApi.cs" />
@@ -103,14 +105,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="APIs\CustomerSubscriptions\RequestMessages\" />
-    <Folder Include="APIs\CustomerSubscriptions\ResponseMessages\" />
     <Folder Include="APIs\Customers\RequestMessages\" />
     <Folder Include="APIs\Customers\ResponseMessages\" />
     <Folder Include="APIs\Events\RequestMessages\" />
     <Folder Include="APIs\Events\ResponseMessages\" />
-    <Folder Include="APIs\Installments\RequestMessages\" />
-    <Folder Include="APIs\Installments\ResponseMessages\" />
     <Folder Include="APIs\WebhookDeliveries\RequestMessages\" />
     <Folder Include="APIs\WebhookDeliveries\ResponseMessages\" />
     <Folder Include="APIs\Webhooks\RequestMessages\" />

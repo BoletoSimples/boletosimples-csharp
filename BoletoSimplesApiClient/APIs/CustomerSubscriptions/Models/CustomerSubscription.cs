@@ -1,22 +1,18 @@
-﻿using BoletoSimplesApiClient.APIs.BankBillets.Models;
-using BoletoSimplesApiClient.Common;
+﻿using BoletoSimplesApiClient.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BoletoSimplesApiClient.APIs.Installments.Models
+namespace BoletoSimplesApiClient.APIs.CustomerSubscriptions.Models
 {
     /// <summary>
-    /// Classe que representa o boleto
+    /// Classe que representa a assinatura
     /// </summary>
-    [JsonRoot("installment")]
-    public sealed class Installment
+    [JsonRoot("customer_subscription")]
+    public sealed class CustomerSubscription
     {
         /// <summary>
-        /// ID do carnê
+        /// ID da assinatura
         /// </summary>
         public int Id { get; set; }
 
@@ -31,30 +27,31 @@ namespace BoletoSimplesApiClient.APIs.Installments.Models
         public int BankBilletAccountId { get; set; }
 
         /// <summary>
+        /// Com quantos dias de antecedência à data de vencimento a cobrança será gerada.Default: 7.
+        /// </summary>
+        public int DaysInAdvance { get; set; }
+
+        /// <summary>
         /// Preço do carnê em (R$) Formato: 1234.34
         /// </summary>
         public decimal Amount { get; private set; }
 
         /// <summary>
         /// Ciclo da carnê(possíveis valores). Default: monthly
-        /// Use Constants.Cycles para enviar os valores corretos
+        /// Use InstallmentsConstants.Cycles para enviar os valores corretos
         /// </summary>
         public string Cycle { get; set; }
 
         /// <summary>
-        /// Data da Primeira cobrança.
+        /// Data da Primeira ou Próxima cobrança.Caso não seja enviado uma data, 
+        /// esse campo será calculado para ter o valor do dia da criação da assinatura mais o ciclo escolhido.Ex.: Mensal(Hoje + 30 dias).
         /// </summary>
-        public DateTime StartAt { get; private set; }
+        public DateTime NextBilling { get; private set; }
 
         /// <summary>
-        /// Data da última cobrança.
+        /// Data em que deseja parar as cobranças.Caso em branco, as cobranças serão geradas automaticamente até que se informe uma data ou se exclua a assinatura.
         /// </summary>
-        public DateTime EndAt { get; set; }
-
-        /// <summary>
-        /// Quantidade de parcelas
-        /// </summary>
-        public int Total { get; private set; }
+        public DateTime? EndAt { get; set; }
 
         /// <summary>
         /// Descrição do produto vendido ou serviço prestado.
@@ -67,18 +64,12 @@ namespace BoletoSimplesApiClient.APIs.Installments.Models
         public string Instructions { get; set; }
 
         /// <summary>
-        /// Situação do carnê
-        /// Use InstallmentsConstants.Status para enviar os valores corretos
-        /// </summary>
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Multa por Atraso
+        ///  Multa por Atraso Ex: 2% x R$ 250,00 = R$ 5,00
         /// </summary>
         public decimal FineForDelay { get; set; }
 
         /// <summary>
-        /// Juros de Mora
+        /// Juros de Mora Mensal(O valor será dividido por 30. Ex 3% = 0,1% ao dia.)
         /// </summary>
         public decimal LatePaymentInterest { get; set; }
 
@@ -88,27 +79,15 @@ namespace BoletoSimplesApiClient.APIs.Installments.Models
         public int? BankBilletLayoutId { get; set; }
 
         /// <summary>
-        /// URL para visualização do carnê
-        /// </summary>
-        public string Url { get; set; }
-
-        /// <summary>
         /// IDs de boletos vinculados ao carnê
         /// </summary>
         public List<int> BankBilletIds { get; set; }
 
-        /// <summary>
-        /// Boletos vinculados ao carnê
-        /// </summary>
-        public List<BankBillet> BankBillets { get; set; }
-
         [JsonConstructor]
-        public Installment(int customerId, decimal amount, DateTime startAt, int total, string description)
+        public CustomerSubscription(int customerId, decimal amount, string description)
         {
             CustomerId = customerId;
             Amount = amount;
-            StartAt = startAt;
-            Total = total;
             Description = description;
         }
     }
