@@ -9,6 +9,7 @@ using BoletoSimplesApiClient.APIs.Discharges.Models;
 using BoletoSimplesApiClient.APIs.Remittances.Models;
 using BoletoSimplesApiClient.APIs.Installments.Models;
 using BoletoSimplesApiClient.APIs.CustomerSubscriptions.Models;
+using BoletoSimplesApiClient.APIs.Events.Models;
 
 namespace BoletoSimplesApiClient.UnitTests.Json
 {
@@ -132,15 +133,39 @@ namespace BoletoSimplesApiClient.UnitTests.Json
                 firstCustomerSubscription = await Task.FromResult(JsonConvert.DeserializeObject<CustomerSubscription>(JsonConstants.CurstomerSubscription))
                                                       .ConfigureAwait(false);
 
-                var customerSunbscriptionJson = await Task.FromResult(JsonConvert.SerializeObject(firstCustomerSubscription))
+                var customerSubscriptionJson = await Task.FromResult(JsonConvert.SerializeObject(firstCustomerSubscription))
                                                           .ConfigureAwait(false);
 
-                secondCustomerSubscription = await Task.FromResult(JsonConvert.DeserializeObject<CustomerSubscription>(customerSunbscriptionJson))
+                secondCustomerSubscription = await Task.FromResult(JsonConvert.DeserializeObject<CustomerSubscription>(customerSubscriptionJson))
                                                        .ConfigureAwait(false);
             });
 
             // Other Asserts
             firstCustomerSubscription.ShouldBeEquivalentTo(secondCustomerSubscription);
+        }
+
+        [Test]
+        public async Task Given_input_json_of_model_Event_should_be_serialize_and_desesialize_right()
+        {
+            // Arrange
+            EventData firstEventData = null;
+            EventData secondEventData = null;
+
+            // Act && Assert
+            Assert.DoesNotThrowAsync(async () =>
+            {
+                firstEventData = await Task.FromResult(JsonConvert.DeserializeObject<EventData>(JsonConstants.Event))
+                                                                  .ConfigureAwait(false);
+
+                var eventDataJson = await Task.FromResult(JsonConvert.SerializeObject(firstEventData))
+                                                                     .ConfigureAwait(false);
+
+                secondEventData = await Task.FromResult(JsonConvert.DeserializeObject<EventData>(eventDataJson))
+                                                                   .ConfigureAwait(false);
+            });
+
+            // Other Asserts
+            firstEventData.ShouldBeEquivalentTo(secondEventData);
         }
     }
 }

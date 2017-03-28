@@ -81,6 +81,8 @@
     <Compile Include="APIs\CustomerSubscriptions\Models\CustomerSubscription.cs" />
     <Compile Include="APIs\Discharges\DischargesApi.cs" />
     <Compile Include="APIs\Discharges\Models\Discharge.cs" />
+    <Compile Include="APIs\Events\EventsApi.cs" />
+    <Compile Include="APIs\Events\Models\EventData.cs" />
     <Compile Include="APIs\Installments\InstallmentsApi.cs" />
     <Compile Include="APIs\Installments\Models\Installment.cs" />
     <Compile Include="APIs\Remittances\Models\Remittance.cs" />
@@ -107,8 +109,6 @@
   <ItemGroup>
     <Folder Include="APIs\Customers\RequestMessages\" />
     <Folder Include="APIs\Customers\ResponseMessages\" />
-    <Folder Include="APIs\Events\RequestMessages\" />
-    <Folder Include="APIs\Events\ResponseMessages\" />
     <Folder Include="APIs\WebhookDeliveries\RequestMessages\" />
     <Folder Include="APIs\WebhookDeliveries\ResponseMessages\" />
     <Folder Include="APIs\Webhooks\RequestMessages\" />

@@ -17,8 +17,17 @@
                                             'paid_agency': 'Agência de Pagamento'}";
 
         public const string Discharge = @"{'id':132,'filename':'arquivo-test.ret','processed_at':null,'created_via_api':true,'status':'unprocessed','bank_billet_account_id':null,'created_via_integration':null}";
+
         public const string Remittance = @"{ 'filename' : '1605061.REM', 'created_via_api' : true, 'status' : 'processed','bank_billet_account_id' : 1, 'created_at' : '2016-05-06', 'processed_at' : '2016-05-06', 'url' : 'https://sandbox.boletosimples.com.br/remessas/06tt1bcc3f6132720866b53a57c76de4/download', 'id' : 1, 'bank_billet_ids' : [1] }";
+
         public const string Installment = @"{'id':1,'amount':1120.4,'cycle':'monthly','start_at':'2016-09-15','end_at':'2016-11-16','instructions':null,'customer_id':11,'description':'Hospedagem','created_at':'2016-08-15','updated_at':'2016-08-15','created_via_api':true,'total':3,'bank_billet_account_id':12,'status':'created','fine_for_delay': 0.0,'late_payment_interest':0.0}";
+
         public const string CurstomerSubscription = @"{'id':1,'amount':1120.4,'cycle':'monthly','next_billing':'2017-01-01','end_at':'2016-11-16','instructions':null,'customer_id':11,'description':'Hospedagem','bank_billet_account_id':12,'fine_for_delay': 0.0,'late_payment_interest':0.0}";
+
+        public const string Event = @"{'id': 224,'code': 'customer.updated','data': {  'object': {'id': 67,'city_name': 'Rio de Janeiro','person_name': 'Joao da Silva','address': 'Rua quinhentos',
+                                       'address_complement': 'Sala 4','address_number': '111','mobile_number': '','cnpj_cpf': '782.661.177-64','email': 'novo@example.com','neighborhood': 'bairro',
+                                       'person_type': 'individual','phone_number': '2112123434','zipcode': '12312-123','mobile_local_code': '','state': 'RJ','created_via_api': true  }, 
+                                       'changes': {'email': [  'antigo@example.com',  'novo@example.com'],'mobile_local_code': [  null,  ''],'mobile_number': [  null,  ''],
+                                       'updated_at': [  '2015-03-08 19:27:36 -0300',  '2015-03-17 21:37:53 -0300']  }},'occurred_at': '2015-03-17T21:37:53.000-03:00' }";
     }
 }

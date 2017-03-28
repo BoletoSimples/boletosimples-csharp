@@ -1,6 +1,4 @@
 ﻿using BoletoSimplesApiClient.APIs.Installments.Models;
-using BoletoSimplesApiClient.UnitTests.Json;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Net;

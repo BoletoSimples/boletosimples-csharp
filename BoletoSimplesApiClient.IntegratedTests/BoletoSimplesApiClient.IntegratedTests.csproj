@@ -193,6 +193,7 @@
     <Compile Include="ClientConnectionIntegratedTests.cs" />
     <Compile Include="CustomerSubscriptionsApiIntegratedTests.cs" />
     <Compile Include="DischargeApiIntegratedTests.cs" />
+    <Compile Include="EventApiIntegratedTest.cs" />
     <Compile Include="InstallmentApiIntegratedTests.cs" />
     <Compile Include="PagedResponseIntegratedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
