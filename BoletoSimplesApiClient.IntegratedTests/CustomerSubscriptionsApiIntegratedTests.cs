@@ -89,7 +89,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             var allChargesResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Act
-            var nextSubscription = await Client.CustomerSubscriptions.PostAsync(allChargesResponse.Items.First().Id).ConfigureAwait(false);
+            var nextSubscription = await Client.CustomerSubscriptions.NextChargeAsync(allChargesResponse.Items.First().Id).ConfigureAwait(false);
             var sucessResponse = await nextSubscription.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert

@@ -99,7 +99,7 @@ namespace BoletoSimplesApiClient.APIs.CustomerSubscriptions
         /// <param name="customerSubscriptionId">Id da assinatura</param>
         /// <returns>A próxima assinatura criada com sucesso</returns>
         /// <see cref="http://api.boletosimples.com.br/reference/v1/customer_subscriptions/#gerar-próxima-cobrança"/>
-        public async Task<ApiResponse<CustomerSubscription>> PostAsync(int customerSubscriptionId)
+        public async Task<ApiResponse<CustomerSubscription>> NextChargeAsync(int customerSubscriptionId)
         {
             var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{CUSTOMER_SUBSCRIPTION_API}/{customerSubscriptionId}/next_charge")
                                          .WithMethod(HttpMethod.Post)
