@@ -3,6 +3,7 @@ using BoletoSimplesApiClient.APIs.Remittances.Models;
 using BoletoSimplesApiClient.UnitTests.Json;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using System;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -73,7 +74,15 @@ namespace BoletoSimplesApiClient.IntegratedTests
         }
 
         [Test]
-        public async Task Delete_remittances_with_sucess()
+        public async Task Try_list_more_than_250_remittances_throw_exception()
+        {
+            // Act && Assert
+            var ex = Assert.ThrowsAsync<ArgumentException>(async () => await Client.BankBillets.GetAsync(0, 1000).ConfigureAwait(false));
+            Assert.That(ex.Message, Is.EqualTo("o valor máximo para o argumento maxPerPage é 250"));
+        }
+
+        [Test]
+        public async Task Delete_remittance_with_sucess()
         {
             // Arrange
             var responseList = await Client.Remittances.GetAsync(457).ConfigureAwait(false);

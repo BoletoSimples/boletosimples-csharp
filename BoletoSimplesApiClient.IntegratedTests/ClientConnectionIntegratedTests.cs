@@ -53,6 +53,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Assert
             Assert.That(response.IsSuccess, Is.False);
             Assert.That(response.ErrorResponse.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+            Assert.That(response.ErrorResponse.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
             successResponse.Should().Equals(new UserInfo());
         }
     }

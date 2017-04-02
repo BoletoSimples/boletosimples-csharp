@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using System.Net;
+using System;
 
 namespace BoletoSimplesApiClient.IntegratedTests
 {
@@ -56,6 +57,14 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Assert
             Assert.That(getResponse.IsSuccess, Is.True);
             Assert.That(getSucessResponse.Items, Is.Not.Empty);
+        }
+
+        [Test]
+        public async Task Try_list_more_than_250_discharge_throw_exception()
+        {
+            // Act && Assert
+            var ex = Assert.ThrowsAsync<ArgumentException>(async () => await Client.BankBillets.GetAsync(0, 1000).ConfigureAwait(false));
+            Assert.That(ex.Message, Is.EqualTo("o valor máximo para o argumento maxPerPage é 250"));
         }
 
         [Test]

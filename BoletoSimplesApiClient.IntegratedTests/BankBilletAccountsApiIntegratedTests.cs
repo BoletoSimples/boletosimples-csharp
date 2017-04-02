@@ -43,6 +43,35 @@ namespace BoletoSimplesApiClient.IntegratedTests
         }
 
         [Test]
+        public async Task List_bank_account_billets_paged_response_with_success()
+        {
+            // Arrange
+            PagedApiResponse<BankBilletAccount> response;
+            Paged<BankBilletAccount> successResponse;
+            using (var client = new BoletoSimplesClient())
+            {
+
+                // Act
+                response = await client.BankBilletAccounts.GetAsync(0, 250).ConfigureAwait(false);
+                successResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
+            }
+
+            // Assert
+            Assert.That(response.IsSuccess, Is.True);
+            Assert.That(successResponse.MaxPageSize, Is.EqualTo(250));
+            Assert.That(successResponse.CurrentPage, Is.EqualTo(0));
+            Assert.That(successResponse, Is.InstanceOf<Paged<BankBilletAccount>>());
+        }
+
+        [Test]
+        public async Task Try_list_more_than_250_bank_account_billets_throw_exception()
+        {
+            // Act && Assert
+            var ex = Assert.ThrowsAsync<ArgumentException>(async () => await Client.BankBilletAccounts.GetAsync(0, 1000).ConfigureAwait(false));
+            Assert.That(ex.Message, Is.EqualTo("o valor máximo para o argumento maxPerPage é 250"));
+        }
+
+        [Test]
         public async Task Update_bank_account_billets_by_id_with_success()
         {
             // Arrange

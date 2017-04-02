@@ -4,6 +4,7 @@ using BoletoSimplesApiClient.APIs.CustomerSubscriptions.Models;
 using System.Net;
 using BoletoSimplesApiClient.APIs;
 using System.Linq;
+using System;
 
 namespace BoletoSimplesApiClient.IntegratedTests
 {
@@ -80,6 +81,13 @@ namespace BoletoSimplesApiClient.IntegratedTests
             Assert.That(sucessResponse.Items, Is.Not.Empty);
         }
 
+        [Test]
+        public async Task Try_list_more_than_250_customer_subscription_throw_exception()
+        {
+            // Act && Assert
+            var ex = Assert.ThrowsAsync<ArgumentException>(async () => await Client.BankBillets.GetAsync(0, 1000).ConfigureAwait(false));
+            Assert.That(ex.Message, Is.EqualTo("o valor máximo para o argumento maxPerPage é 250"));
+        }
 
         [Test]
         public async Task Create_next_charge_for_CustomerSubscription_with_sucess()
