@@ -79,6 +79,8 @@
     <Compile Include="APIs\BankBillets\RequestMessages\Duplicate.cs" />
     <Compile Include="APIs\CustomerSubscriptions\CustomerSubscriptionApi.cs" />
     <Compile Include="APIs\CustomerSubscriptions\Models\CustomerSubscription.cs" />
+    <Compile Include="APIs\Customers\CustomersApi.cs" />
+    <Compile Include="APIs\Customers\Models\Customer.cs" />
     <Compile Include="APIs\Discharges\DischargesApi.cs" />
     <Compile Include="APIs\Discharges\Models\Discharge.cs" />
     <Compile Include="APIs\Events\EventsApi.cs" />

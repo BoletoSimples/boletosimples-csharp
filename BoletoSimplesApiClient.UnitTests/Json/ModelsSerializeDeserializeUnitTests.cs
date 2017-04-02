@@ -10,6 +10,7 @@ using BoletoSimplesApiClient.APIs.Remittances.Models;
 using BoletoSimplesApiClient.APIs.Installments.Models;
 using BoletoSimplesApiClient.APIs.CustomerSubscriptions.Models;
 using BoletoSimplesApiClient.APIs.Events.Models;
+using BoletoSimplesApiClient.APIs.Customers.Models;
 
 namespace BoletoSimplesApiClient.UnitTests.Json
 {
@@ -166,6 +167,30 @@ namespace BoletoSimplesApiClient.UnitTests.Json
 
             // Other Asserts
             firstEventData.ShouldBeEquivalentTo(secondEventData);
+        }
+
+        [Test]
+        public async Task Given_input_json_of_model_Customer_should_be_serialize_and_desesialize_right()
+        {
+            // Arrange
+            Customer firstCustomer = null;
+            Customer secondCustomer = null;
+
+            // Act && Assert
+            Assert.DoesNotThrowAsync(async () =>
+            {
+                firstCustomer = await Task.FromResult(JsonConvert.DeserializeObject<Customer>(JsonConstants.Customer))
+                                                                  .ConfigureAwait(false);
+
+                var eventDataJson = await Task.FromResult(JsonConvert.SerializeObject(firstCustomer))
+                                                                     .ConfigureAwait(false);
+
+                secondCustomer = await Task.FromResult(JsonConvert.DeserializeObject<Customer>(eventDataJson))
+                                                                   .ConfigureAwait(false);
+            });
+
+            // Other Asserts
+            firstCustomer.ShouldBeEquivalentTo(secondCustomer);
         }
     }
 }

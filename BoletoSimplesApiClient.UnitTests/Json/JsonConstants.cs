@@ -29,5 +29,7 @@
                                        'person_type': 'individual','phone_number': '2112123434','zipcode': '12312-123','mobile_local_code': '','state': 'RJ','created_via_api': true  }, 
                                        'changes': {'email': [  'antigo@example.com',  'novo@example.com'],'mobile_local_code': [  null,  ''],'mobile_number': [  null,  ''],
                                        'updated_at': [  '2015-03-08 19:27:36 -0300',  '2015-03-17 21:37:53 -0300']  }},'occurred_at': '2015-03-17T21:37:53.000-03:00' }";
+
+        public const string Customer = @"{'person_name':'Nome do Cliente', 'cnpj_cpf': '125.812.717-28', 'zipcode': '20071004', 'address': 'Rua quinhentos', 'city_name': 'Rio de Janeiro', 'state': 'RJ', 'neighborhood': 'bairro'}";
     }
 }

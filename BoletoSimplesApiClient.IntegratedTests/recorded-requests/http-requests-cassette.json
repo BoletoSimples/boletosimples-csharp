@@ -6141,5 +6141,1243 @@
       "httpVersion": "1.1"
     },
     "recordedAt": "2017-03-28T14:35:29.389-03:00"
+  },
+  {
+    "request": {
+      "method": "POST",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers?uuid=f9e81c38056fbfec077e34c9e72864d5",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        {
+          "Content-Length": "253"
+        }
+      ],
+      "body": "{\"customer\": {\"person_name\":\"Any Name\",\"cnpj_cpf\":\"532.631.501-70\",\"zipcode\":\"99999-999\",\"address\":\"Any Street\",\"city_name\":\"Any City\",\"state\":\"Any State\",\"neighborhood\":\"Any Neighborhood\",\"email\":\"anyemail@gmail.com\",\"email_cc\":\"otheremail@gmail.com\"}}"
+    },
+    "response": {
+      "status": {
+        "code": "422",
+        "message": "Unprocessable Entity"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "no-cache"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:14:51 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "422 Unprocessable Entity"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "492"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "3edc79c9-4fbf-49c5-b312-c768b3a4cc16"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.033767"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "invalidate, pass"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"errors\":{\"city_id\":[\"não pode ficar em branco\"],\"state\":[\"é muito longo (máximo: 2 caracteres)\"]}}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:11:35.922-03:00"
+  },
+  {
+    "request": {
+      "method": "POST",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers?uuid=7cade36d7373f2e7e94ed242fde6b813",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        {
+          "Content-Length": "253"
+        }
+      ],
+      "body": "{\"customer\": {\"person_name\":\"Any Name\",\"cnpj_cpf\":\"477.774.674-76\",\"zipcode\":\"88888-888\",\"address\":\"Any Street\",\"city_name\":\"Any City\",\"state\":\"Any State\",\"neighborhood\":\"Any Neighborhood\",\"email\":\"anyemail@gmail.com\",\"email_cc\":\"otheremail@gmail.com\"}}"
+    },
+    "response": {
+      "status": {
+        "code": "422",
+        "message": "Unprocessable Entity"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "no-cache"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:13:26 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "422 Unprocessable Entity"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "498"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "cb09d953-dbe7-47a0-a032-8892419ad7eb"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.040200"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "invalidate, pass"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"errors\":{\"city_id\":[\"não pode ficar em branco\"],\"state\":[\"é muito longo (máximo: 2 caracteres)\"]}}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:10:09.641-03:00"
+  },
+  {
+    "request": {
+      "method": "GET",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers/cnpj_cpf?q=477.774.674-76&uuid=c7a878578ba3859721b68fd162a9d529",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [],
+      "body": ""
+    },
+    "response": {
+      "status": {
+        "code": "200",
+        "message": "OK"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "must-revalidate, max-age=0, private"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:25:50 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "ETag": "W/\"96070f6244c519f2d272bcf6713f1b59\""
+        },
+        {
+          "Location": "https://sandbox.boletosimples.com.br/api/v1/customers/2110"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "200 OK"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "487"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "f1f86d7d-1fb7-4c3d-b9e7-1575558f8004"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.035638"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "miss"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"id\":2110,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Any Name\",\"address\":\"Any Street\",\"address_complement\":null,\"address_number\":null,\"mobile_number\":null,\"cnpj_cpf\":\"477.774.674-76\",\"email\":\"anyemail@gmail.com\",\"neighborhood\":\"Any Neighborhood\",\"person_type\":\"individual\",\"phone_number\":null,\"zipcode\":\"88888888\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":true,\"email_cc\":\"otheremail@gmail.com\"}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:22:34.111-03:00"
+  },
+  {
+    "request": {
+      "method": "GET",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers/email?q=anyemail@gmail.com&uuid=79e14b671448ebd918964b2f17cf2e10",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [],
+      "body": ""
+    },
+    "response": {
+      "status": {
+        "code": "200",
+        "message": "OK"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "must-revalidate, max-age=0, private"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:25:52 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "ETag": "W/\"96070f6244c519f2d272bcf6713f1b59\""
+        },
+        {
+          "Location": "https://sandbox.boletosimples.com.br/api/v1/customers/2110"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "200 OK"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "486"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "f542494f-8dde-47a5-b59b-49ff8a6c2748"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.034742"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "miss"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"id\":2110,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Any Name\",\"address\":\"Any Street\",\"address_complement\":null,\"address_number\":null,\"mobile_number\":null,\"cnpj_cpf\":\"477.774.674-76\",\"email\":\"anyemail@gmail.com\",\"neighborhood\":\"Any Neighborhood\",\"person_type\":\"individual\",\"phone_number\":null,\"zipcode\":\"88888888\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":true,\"email_cc\":\"otheremail@gmail.com\"}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:22:35.586-03:00"
+  },
+  {
+    "request": {
+      "method": "GET",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers?page=1&per_page=250&uuid=2377780637021314027435d0b99d0bba",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [],
+      "body": ""
+    },
+    "response": {
+      "status": {
+        "code": "200",
+        "message": "OK"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "must-revalidate, max-age=0, private"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:13:30 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "ETag": "W/\"640e31d839c6e4a474242a975f6d1765\""
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "200 OK"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "495"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "1140e1a4-ffc2-4bc2-abff-98bb496ecd84"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "Total": "3"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.090042"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "miss"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "[{\"id\":1791,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Boleto Simples Cobranças Ltda.\",\"address\":\"Rua da Glória\",\"address_complement\":\"Sala 1002\",\"address_number\":\"190\",\"mobile_number\":null,\"cnpj_cpf\":\"05.813.794/0001-26\",\"email\":\"suporte@boletosimples.com.br\",\"neighborhood\":\"Glória\",\"person_type\":\"juridical\",\"phone_number\":null,\"zipcode\":\"20241180\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":false,\"email_cc\":null},{\"id\":1800,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Nome do Cliente\",\"address\":\"Rua quinhentos\",\"address_complement\":null,\"address_number\":null,\"mobile_number\":null,\"cnpj_cpf\":\"125.812.717-28\",\"email\":null,\"neighborhood\":\"bairro\",\"person_type\":\"individual\",\"phone_number\":null,\"zipcode\":\"12312123\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":true,\"email_cc\":null},{\"id\":1805,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Test Billet\",\"address\":\"Any Street\",\"address_complement\":\"Sl 1001\",\"address_number\":\"100\",\"mobile_number\":null,\"cnpj_cpf\":\"450.824.194-80\",\"email\":\"anyemmail@gmail.com\",\"neighborhood\":\"Glória\",\"person_type\":\"individual\",\"phone_number\":\"21999999999\",\"zipcode\":\"12345678\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":true,\"email_cc\":null}]",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:10:13.672-03:00"
+  },
+  {
+    "request": {
+      "method": "POST",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers?uuid=7951fbb006597b7ca4ad4091624350c1",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        {
+          "Content-Length": "253"
+        }
+      ],
+      "body": "{\"customer\": {\"person_name\":\"Any Name\",\"cnpj_cpf\":\"444.754.717-10\",\"zipcode\":\"00000-999\",\"address\":\"Any Street\",\"city_name\":\"Any City\",\"state\":\"Any State\",\"neighborhood\":\"Any Neighborhood\",\"email\":\"anyemail@gmail.com\",\"email_cc\":\"otheremail@gmail.com\"}}"
+    },
+    "response": {
+      "status": {
+        "code": "422",
+        "message": "Unprocessable Entity"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "no-cache"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:13:32 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "422 Unprocessable Entity"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "494"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "52fac45e-f80f-4239-a177-d28a5e613b01"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.055338"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "invalidate, pass"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"errors\":{\"city_id\":[\"não pode ficar em branco\"],\"state\":[\"é muito longo (máximo: 2 caracteres)\"]}}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:10:16.114-03:00"
+  },
+  {
+    "request": {
+      "method": "POST",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers?uuid=abebce65a1f69a5d8be08f46c3000e3b",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        {
+          "Content-Length": "246"
+        }
+      ],
+      "body": "{\"customer\": {\"person_name\":\"Any Name\",\"cnpj_cpf\":\"532.631.501-70\",\"zipcode\":\"99999-999\",\"address\":\"Any Street\",\"city_name\":\"Any City\",\"state\":\"RJ\",\"neighborhood\":\"Any Neighborhood\",\"email\":\"anyemail@gmail.com\",\"email_cc\":\"otheremail@gmail.com\"}}"
+    },
+    "response": {
+      "status": {
+        "code": "422",
+        "message": "Unprocessable Entity"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "no-cache"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:23:02 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "422 Unprocessable Entity"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "491"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "5834b5fd-237c-4118-b55b-c18e7872709b"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.039806"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "invalidate, pass"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"errors\":{\"city_id\":[\"não pode ficar em branco\"]}}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:19:45.782-03:00"
+  },
+  {
+    "request": {
+      "method": "POST",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers?uuid=d5bc498581d86541635cfef40668c249",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        {
+          "Content-Length": "252"
+        }
+      ],
+      "body": "{\"customer\": {\"person_name\":\"Any Name\",\"cnpj_cpf\":\"532.631.501-70\",\"zipcode\":\"99999-999\",\"address\":\"Any Street\",\"city_name\":\"Rio de Janeiro\",\"state\":\"RJ\",\"neighborhood\":\"Any Neighborhood\",\"email\":\"anyemail@gmail.com\",\"email_cc\":\"otheremail@gmail.com\"}}"
+    },
+    "response": {
+      "status": {
+        "code": "201",
+        "message": "Created"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "must-revalidate, max-age=0, private"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:24:56 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "ETag": "W/\"642959aad753299dcedb453099297cab\""
+        },
+        {
+          "Location": "https://sandbox.boletosimples.com.br/api/v1/customers/2109"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "201 Created"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "490"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "a8880713-55de-40f6-b52a-38195c2d2db5"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.059090"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "invalidate, pass"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"id\":2109,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Any Name\",\"address\":\"Any Street\",\"address_complement\":null,\"address_number\":null,\"mobile_number\":null,\"cnpj_cpf\":\"532.631.501-70\",\"email\":\"anyemail@gmail.com\",\"neighborhood\":\"Any Neighborhood\",\"person_type\":\"individual\",\"phone_number\":null,\"zipcode\":\"99999999\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":true,\"email_cc\":\"otheremail@gmail.com\"}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:21:39.841-03:00"
+  },
+  {
+    "request": {
+      "method": "POST",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers?uuid=746af5bc2ea96a29ed6547bf55501b00",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        {
+          "Content-Length": "252"
+        }
+      ],
+      "body": "{\"customer\": {\"person_name\":\"Any Name\",\"cnpj_cpf\":\"477.774.674-76\",\"zipcode\":\"88888-888\",\"address\":\"Any Street\",\"city_name\":\"Rio de Janeiro\",\"state\":\"RJ\",\"neighborhood\":\"Any Neighborhood\",\"email\":\"anyemail@gmail.com\",\"email_cc\":\"otheremail@gmail.com\"}}"
+    },
+    "response": {
+      "status": {
+        "code": "201",
+        "message": "Created"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "must-revalidate, max-age=0, private"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:25:46 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "ETag": "W/\"96070f6244c519f2d272bcf6713f1b59\""
+        },
+        {
+          "Location": "https://sandbox.boletosimples.com.br/api/v1/customers/2110"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "201 Created"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "489"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "ff9e136b-a55c-44e5-97f3-d4f3fb18e79e"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.045740"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "invalidate, pass"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"id\":2110,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Any Name\",\"address\":\"Any Street\",\"address_complement\":null,\"address_number\":null,\"mobile_number\":null,\"cnpj_cpf\":\"477.774.674-76\",\"email\":\"anyemail@gmail.com\",\"neighborhood\":\"Any Neighborhood\",\"person_type\":\"individual\",\"phone_number\":null,\"zipcode\":\"88888888\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":true,\"email_cc\":\"otheremail@gmail.com\"}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:22:29.815-03:00"
+  },
+  {
+    "request": {
+      "method": "GET",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers/2110?uuid=ade926a9543680633a676aa03ff0f64d",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [],
+      "body": ""
+    },
+    "response": {
+      "status": {
+        "code": "200",
+        "message": "OK"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "must-revalidate, max-age=0, private"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:25:48 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "ETag": "W/\"96070f6244c519f2d272bcf6713f1b59\""
+        },
+        {
+          "Location": "https://sandbox.boletosimples.com.br/api/v1/customers/2110"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "200 OK"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "488"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "b30ad127-09ac-403f-a5b1-1c1201c5317d"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.039939"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "miss"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"id\":2110,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Any Name\",\"address\":\"Any Street\",\"address_complement\":null,\"address_number\":null,\"mobile_number\":null,\"cnpj_cpf\":\"477.774.674-76\",\"email\":\"anyemail@gmail.com\",\"neighborhood\":\"Any Neighborhood\",\"person_type\":\"individual\",\"phone_number\":null,\"zipcode\":\"88888888\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":true,\"email_cc\":\"otheremail@gmail.com\"}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:22:32.342-03:00"
+  },
+  {
+    "request": {
+      "method": "POST",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers?uuid=def79edbb7e7cb0a9a9bcca100c6ddc0",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        {
+          "Content-Length": "252"
+        }
+      ],
+      "body": "{\"customer\": {\"person_name\":\"Any Name\",\"cnpj_cpf\":\"444.754.717-10\",\"zipcode\":\"00000-999\",\"address\":\"Any Street\",\"city_name\":\"Rio de Janeiro\",\"state\":\"RJ\",\"neighborhood\":\"Any Neighborhood\",\"email\":\"anyemail@gmail.com\",\"email_cc\":\"otheremail@gmail.com\"}}"
+    },
+    "response": {
+      "status": {
+        "code": "201",
+        "message": "Created"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "must-revalidate, max-age=0, private"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:25:53 GMT"
+        },
+        {
+          "Transfer-Encoding": "chunked"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "ETag": "W/\"390a2cd5f5aa1bc66820eb1b8423115b\""
+        },
+        {
+          "Location": "https://sandbox.boletosimples.com.br/api/v1/customers/2111"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin,Accept-Encoding"
+        },
+        {
+          "Status": "201 Created"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "485"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "07472058-1b87-488c-87b5-80c5bb75c5db"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.055599"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "invalidate, pass"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      ],
+      "body": "{\"id\":2111,\"city_name\":\"Rio de Janeiro\",\"person_name\":\"Any Name\",\"address\":\"Any Street\",\"address_complement\":null,\"address_number\":null,\"mobile_number\":null,\"cnpj_cpf\":\"444.754.717-10\",\"email\":\"anyemail@gmail.com\",\"neighborhood\":\"Any Neighborhood\",\"person_type\":\"individual\",\"phone_number\":null,\"zipcode\":\"00000999\",\"mobile_local_code\":null,\"notes\":null,\"state\":\"RJ\",\"created_via_api\":true,\"email_cc\":\"otheremail@gmail.com\"}",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:22:37.249-03:00"
+  },
+  {
+    "request": {
+      "method": "PUT",
+      "uri": "https://sandbox.boletosimples.com.br/api/v1/customers/2111?uuid=4a4383848929677fdf232ff5a478207c",
+      "requestHeaders": [
+        {
+          "Authorization": "Basic ODNjY2Q2MGEzYmRlMmYyZWE1ZGJhYjQwYmQyYWNhZjJkN2FhM2JjNzY5ZWI1YTliY2I1NWNlYWYwZjljM2MzYzpY"
+        },
+        {
+          "User-Agent": "Meu,e-Commerce,(meuecommerce@example.com)"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        {
+          "Content-Length": "189"
+        }
+      ],
+      "body": "{\"customer\": {\"person_name\":\"Any Name\",\"cnpj_cpf\":\"434.621.448-71\",\"zipcode\":\"33333-000\",\"address\":\"Any Street\",\"city_name\":\"Rio de Janeiro\",\"state\":\"RJ\",\"neighborhood\":\"Any Neighborhood\"}}"
+    },
+    "response": {
+      "status": {
+        "code": "204",
+        "message": "No Content"
+      },
+      "responseHeaders": [
+        {
+          "Cache-Control": "no-cache"
+        },
+        {
+          "Connection": "keep-alive"
+        },
+        {
+          "Date": "Sun, 02 Apr 2017 03:25:55 GMT"
+        },
+        {
+          "Via": "1.1 vegur"
+        },
+        {
+          "Location": "https://sandbox.boletosimples.com.br/api/v1/customers/2111"
+        },
+        {
+          "Server": "nginx/1.10.2,+,Phusion,Passenger,5.1.2"
+        },
+        {
+          "Vary": "Origin"
+        },
+        {
+          "Status": "204 No Content"
+        },
+        {
+          "X-Ratelimit-Limit": "500"
+        },
+        {
+          "Strict-Transport-Security": "max-age=631138519"
+        },
+        {
+          "X-Ratelimit-Remaining": "484"
+        },
+        {
+          "X-Permitted-Cross-Domain-Policies": "none"
+        },
+        {
+          "X-Xss-Protection": "1; mode=block"
+        },
+        {
+          "X-Request-Id": "ab2cf795-1dcb-4bee-81c9-bddb48100832"
+        },
+        {
+          "Content-Security-Policy-Report-Only": "default-src 'self'; child-src 'self' www.googleadservices.com googleads.g.doubleclick.net www.google.com; connect-src ws: wss: *.intercom.io ws.pusherapp.com hn.inspectlet.com stats.pusher.com boletosimples.com.br *.boletosimples.com.br; font-src 'self' fonts.googleapis.com fonts.gstatic.com js.intercomcdn.com data: d25j7wj0q61kjj.cloudfront.net; img-src 'self' https: data: maps.googleapis.com dev.bole.to:5001 bole.to boletosimples-sandbox.s3.amazonaws.com; script-src 'self' 'unsafe-inline' static.intercomcdn.com cdn.inspectlet.com widget.intercom.io js.intercomcdn.com js.pusher.com stats.pusher.com zapier.com www.google-analytics.com www.googleadservices.com doug1izaerwt3.cloudfront.net app.popupdomination.com cdn.ywxi.net www.draw.io tag.getdrip.com www.getdrip.com js-agent.newrelic.com bam.nr-data.net cdnjs.cloudflare.com widget.pluga.co d25j7wj0q61kjj.cloudfront.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com d25j7wj0q61kjj.cloudfront.net; report-uri https://boletosimples.report-uri.io/r/default/csp/reportOnly"
+        },
+        {
+          "X-Download-Options": "noopen"
+        },
+        {
+          "X-Runtime": "0.057397"
+        },
+        {
+          "X-Frame-Options": "sameorigin"
+        },
+        {
+          "X-Content-Type-Options": "nosniff"
+        },
+        {
+          "X-Rack-Cache": "invalidate, pass"
+        },
+        {
+          "X-Powered-By": "Phusion Passenger 5.1.2"
+        }
+      ],
+      "contentHeaders": [
+        {
+          "Content-Length": "0"
+        }
+      ],
+      "body": "",
+      "httpVersion": "1.1"
+    },
+    "recordedAt": "2017-04-02T00:22:38.854-03:00"
   }
 ]

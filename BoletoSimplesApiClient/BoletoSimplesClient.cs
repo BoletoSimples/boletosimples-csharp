@@ -1,6 +1,7 @@
 ﻿using BoletoSimplesApiClient.APIs.Auth;
 using BoletoSimplesApiClient.APIs.BankBilletAccounts;
 using BoletoSimplesApiClient.APIs.BankBillets;
+using BoletoSimplesApiClient.APIs.Customers;
 using BoletoSimplesApiClient.APIs.CustomerSubscriptions;
 using BoletoSimplesApiClient.APIs.Discharges;
 using BoletoSimplesApiClient.APIs.Events;
@@ -61,6 +62,11 @@ namespace BoletoSimplesApiClient
         /// </summary>
         public readonly EventsApi Events;
 
+        /// <summary>
+        /// CustomersApi Api de clientes
+        /// </summary>
+        public readonly CustomersApi Customers;
+
         private readonly HttpClient _client;
 
         /// <summary>
@@ -95,6 +101,7 @@ namespace BoletoSimplesApiClient
             Installments = new InstallmentsApi(this);
             CustomerSubscriptions = new CustomerSubscriptionApi(this);
             Events = new EventsApi(this);
+            Customers = new CustomersApi(this);
         }
 
         internal async Task<ApiResponse<T>> SendAsync<T>(HttpRequestMessage request)
