@@ -110,6 +110,10 @@ public class AnyClass
 * **Boletos**
 * **Arquivo CNAB - Remessa**
 * **Arquivo CNAB - Retorno**
+* **Carnês**
+* **Assinaturas**
+* **Clientes**
+* **Eventos**
 
 --------------------
 ### Outras Informações
