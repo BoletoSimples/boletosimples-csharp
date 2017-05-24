@@ -118,7 +118,7 @@ public class AnyClass
 --------------------
 ### Outras Informações
 * [Boleto Simples Documentação Oficial](http://api.boletosimples.com.br/)
-* Para mais exemplos de utilização veja o **[projeto de testes integrados](https://github.com/BoletoSimples/boletosimples-csharp/tree/master/BoletoSimplesApiClient/BoletoSimplesApiClient.IntegratedTests)**
+* Para mais exemplos de utilização veja o **[projeto de testes integrados](https://github.com/BoletoSimples/boletosimples-csharp/tree/master/BoletoSimplesApiClient.IntegratedTests)**
 
 
 ### Bugs, Dúvidas, Issues, Agradecimentos, etc
