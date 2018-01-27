@@ -16,7 +16,7 @@ namespace BoletoSimplesApiClient.Common
         private readonly HttpMethod _method;
         private readonly HttpContent _content;
         private readonly BoletoSimplesClient _client;
-        private readonly Dictionary<string, string> _additionalHeaders = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> _additionalHeaders;
         private readonly JsonSerializerSettings _jsonDefaultSettings = new JsonSerializerSettings
         {
             ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() },
@@ -52,26 +52,23 @@ namespace BoletoSimplesApiClient.Common
 
         public HttpClientRequestBuilder AppendQuery(Dictionary<string, string> queryStringParameters)
         {
-            if (queryStringParameters.Any())
-            {
-                var queryString = string.Join("&", queryStringParameters.Select(p => string.Format("{0}={1}", p.Key, p.Value)));
-                var completeUri = new Uri(Uri.EscapeUriString($"{_uri.AbsoluteUri}?{queryString}"));
-                return new HttpClientRequestBuilder(_client, completeUri, _method, _content, _additionalHeaders);
-            }
+            if (!queryStringParameters.Any())
+                return this;
 
-            return this;
+            var queryString = string.Join("&", queryStringParameters.Select(p => $"{p.Key}={p.Value}"));
+            var completeUri = new Uri(Uri.EscapeUriString($"{_uri.AbsoluteUri}?{queryString}"));
+            return new HttpClientRequestBuilder(_client, completeUri, _method, _content, _additionalHeaders);
         }
 
         /// <summary>
         /// Adiciona objeto como conteudo, não deve ser utilizado para arquivos
         /// </summary>
         /// <param name="content">objeto representando o modelo a ser enviado</param>
+        /// <param name="customOptionalSettings">Método de serialização opcional, caso não seja enviado o default para os contratos da boleto simples será</param>
         /// <returns></returns>
-        public HttpClientRequestBuilder AndOptionalContent(object content)
+        public HttpClientRequestBuilder AndOptionalContent(object content, JsonSerializerSettings customOptionalSettings = null)
         {
-            JsonConvert.DefaultSettings = () => _jsonDefaultSettings;
-
-            var jsonContent = JsonConvert.SerializeObject(content);
+            var jsonContent = JsonConvert.SerializeObject(content, customOptionalSettings ?? _jsonDefaultSettings);
             var rootNameValue = JsonRootAttribute.GetAttributeValue(content.GetType());
 
             if (!string.IsNullOrEmpty(rootNameValue))
@@ -92,8 +89,7 @@ namespace BoletoSimplesApiClient.Common
         public HttpClientRequestBuilder AppendFileContent(string paramKey, string fileName, Stream paramFileStream)
         {
             HttpContent fileStreamContent = new StreamContent(paramFileStream);
-            var content = new MultipartFormDataContent();
-            content.Add(fileStreamContent, paramKey, fileName);
+            var content = new MultipartFormDataContent { { fileStreamContent, paramKey, fileName } };
             return new HttpClientRequestBuilder(_client, _uri, _method, content, _additionalHeaders);
         }
 
