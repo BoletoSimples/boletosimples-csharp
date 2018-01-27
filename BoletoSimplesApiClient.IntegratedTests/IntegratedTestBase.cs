@@ -39,19 +39,18 @@ namespace BoletoSimplesApiClient.IntegratedTests
 
     public class HttpCustomClient : HttpClient
     {
-        private readonly HttpClient ScotchHttpClient;
+        private readonly HttpClient _scotchHttpClient;
         public HttpCustomClient()
         {
             var baseDir = AppDomain.CurrentDomain.BaseDirectory.Replace("\\bin", "").Replace("\\Debug", "").Replace("\\Release", "");
             var cassettePathFile = Path.Combine(baseDir, "recorded-requests", "http-requests-cassette.json");
 
-            ScotchHttpClient = HttpClients.NewHttpClient(cassettePathFile, ScotchMode.Replaying);
+            _scotchHttpClient = HttpClients.NewHttpClient(cassettePathFile, ScotchMode.Recording);
         }
 
         public override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancelationToken)
         {
             var requestContent = string.Empty;
-            var contentBoundary = string.Empty;
 
             if (request.Content != null)
             {
@@ -62,14 +61,14 @@ namespace BoletoSimplesApiClient.IntegratedTests
             var uuid = MD5Hash($"{request.Method}-{request.RequestUri.AbsoluteUri}-{requestContent.Trim()}");
             var newUri = QueryHelpers.AddQueryString(request.RequestUri.AbsoluteUri, "uuid", uuid);
             request.RequestUri = new Uri(newUri);
-            return await ScotchHttpClient.SendAsync(request).ConfigureAwait(false);
+            return await _scotchHttpClient.SendAsync(request, cancelationToken).ConfigureAwait(false);
         }
 
         private static string RemoveBoundaryValue(HttpRequestMessage request, string requestContent)
         {
             if (request.Content is MultipartFormDataContent)
             {
-                var content = ((MultipartFormDataContent)request.Content); ;
+                var content = (MultipartFormDataContent)request.Content;
                 var headerContentType = content.Headers.ContentType;
                 var boundary = headerContentType.Parameters.FirstOrDefault(p => p.Name == "boundary")?.Value;
                 var normalizedBoundary = boundary.Replace("\"", string.Empty);
@@ -88,7 +87,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
 
                 for (int i = 0; i < bytes.Length; i++)
                 {
-                    hash.Append(bytes[i].ToString("x2"));
+                    hash.Append(i.ToString("x2"));
                 }
                 return hash.ToString();
             }

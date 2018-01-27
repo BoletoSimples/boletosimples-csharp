@@ -13,7 +13,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Create_Customer_with_success()
         {
             // Arrange
-            var customer = new Customer("Any Name", "532.631.501-70", "99999-999", "Any Street", "Rio de Janeiro", "RJ", "Any Neighborhood")
+            var customer = new Customer("Any Name", "684.443.376-09", "99999-999", "Any Street", "Rio de Janeiro", "RJ", "Any Neighborhood")
             {
                 Email = "anyemail@gmail.com",
                 EmailCc = "otheremail@gmail.com"
@@ -32,7 +32,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Update_Customer_with_success()
         {
             // Arrange
-            var customer = new Customer("Any Name", "444.754.717-10", "00000-999", "Any Street", "Rio de Janeiro", "RJ", "Any Neighborhood")
+            var customer = new Customer("Any Name", "881.268.115-87", "00000-999", "Any Street", "Rio de Janeiro", "RJ", "Any Neighborhood")
             {
                 Email = "anyemail@gmail.com",
                 EmailCc = "otheremail@gmail.com"
@@ -41,11 +41,10 @@ namespace BoletoSimplesApiClient.IntegratedTests
             var createResponse = await Client.Customers.PostAsync(customer).ConfigureAwait(false);
             var createSucessResponse = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
-            var newCurtomerData = new Customer("Any Name", "434.621.448-71", "33333-000", "Any Street", "Rio de Janeiro", "RJ", "Any Neighborhood");
+            var newCurtomerData = new Customer("Any Name", "881.268.115-87", "33333-000", "Any Street", "Rio de Janeiro", "RJ", "Any Neighborhood");
 
             // Act
             var updateResponse = await Client.Customers.PutAsync(createSucessResponse.Id, newCurtomerData).ConfigureAwait(false);
-            var content = await updateResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             // Assert
             Assert.That(createResponse.IsSuccess, Is.True);
@@ -57,7 +56,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Get_Customer_information_with_success()
         {
             // Arrange
-            var customer = new Customer("Any Name", "477.774.674-76", "88888-888", "Any Street", "Rio de Janeiro", "RJ", "Any Neighborhood")
+            var customer = new Customer("Any Name", "581.905.814-30", "88888-888", "Any Street", "Rio de Janeiro", "RJ", "Any Neighborhood")
             {
                 Email = "anyemail@gmail.com",
                 EmailCc = "otheremail@gmail.com"
@@ -102,14 +101,14 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Get_Customers_by_cpf_or_cnpj_with_sucess()
         {
             // Arrange
-            var response = await Client.Customers.GetByCpfOrCnpjAsync("477.774.674-76").ConfigureAwait(false);
+            var response = await Client.Customers.GetByCpfOrCnpjAsync("581.905.814-30").ConfigureAwait(false);
 
             // Act
             var sucessResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
             Assert.That(response.IsSuccess, Is.True);
-            Assert.That(sucessResponse.CnpjCpf, Is.EqualTo("477.774.674-76"));
+            Assert.That(sucessResponse.CnpjCpf, Is.EqualTo("581.905.814-30"));
         }
 
         [Test]

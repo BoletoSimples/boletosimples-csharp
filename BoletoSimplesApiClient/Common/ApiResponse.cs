@@ -19,7 +19,7 @@ namespace BoletoSimplesApiClient.Common
         private readonly HttpResponseMessage _response;
         private readonly JsonSerializerSettings _jsonSerializeSettings = new JsonSerializerSettings
         {
-            ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
+            ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() },
         };
 
         public ApiResponse(HttpResponseMessage response)

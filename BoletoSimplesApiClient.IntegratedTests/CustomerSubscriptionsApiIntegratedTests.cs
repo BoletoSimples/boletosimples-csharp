@@ -15,10 +15,10 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Create_CustomerSubscription_with_success()
         {
             // Arrange
-            var CustomerSubscription = new CustomerSubscription(1, 1999.55m, "Any Subscription");
+            var customerSubscription = new CustomerSubscription(10349, 1999.55m, "Any Subscription");
 
             // Act
-            var response = await Client.CustomerSubscriptions.PostAsync(CustomerSubscription).ConfigureAwait(false);
+            var response = await Client.CustomerSubscriptions.PostAsync(customerSubscription).ConfigureAwait(false);
             var sucessResponse = await response.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Assert
@@ -30,11 +30,11 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Update_CustomerSubscription_with_success()
         {
             // Arrange
-            var CustomerSubscription = new CustomerSubscription(1, 150.55m, "Any Subscription");
-            var createResponse = await Client.CustomerSubscriptions.PostAsync(CustomerSubscription).ConfigureAwait(false);
+            var customerSubscription = new CustomerSubscription(2111, 150.55m, "Any Subscription");
+            var createResponse = await Client.CustomerSubscriptions.PostAsync(customerSubscription).ConfigureAwait(false);
             var createSucessResponse = await createResponse.GetSuccessResponseAsync().ConfigureAwait(false);
 
-            var subscription = new CustomerSubscription(1, 301.10m, "Other Subscription")
+            var subscription = new CustomerSubscription(2111, 301.10m, "Other Subscription")
             {
                 Cycle = Constants.Cycles.BIMONTHLY,
                 Id = createSucessResponse.Id,
@@ -54,8 +54,8 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Get_CustomerSubscription_information_with_success()
         {
             // Arrange
-            var CustomerSubscription = new CustomerSubscription(1, 9999.55m, "Any Subscription");
-            var responseCreate = await Client.CustomerSubscriptions.PostAsync(CustomerSubscription).ConfigureAwait(false);
+            var customerSubscription = new CustomerSubscription(10349, 9999.55m, "Any Subscription");
+            var responseCreate = await Client.CustomerSubscriptions.PostAsync(customerSubscription).ConfigureAwait(false);
             var sucessCreateResponse = await responseCreate.GetSuccessResponseAsync().ConfigureAwait(false);
 
             // Act
@@ -110,8 +110,8 @@ namespace BoletoSimplesApiClient.IntegratedTests
         public async Task Delete_CustomerSubscription_with_sucess()
         {
             // Arrange
-            var CustomerSubscription = new CustomerSubscription(1, 300.55m, "Any Subscription");
-            var responseCreate = await Client.CustomerSubscriptions.PostAsync(CustomerSubscription).ConfigureAwait(false);
+            var customerSubscription = new CustomerSubscription(10349, 300.55m, "Any Subscription");
+            var responseCreate = await Client.CustomerSubscriptions.PostAsync(customerSubscription).ConfigureAwait(false);
             var sucessCreateResponse = await responseCreate.GetSuccessResponseAsync().ConfigureAwait(false);
 
             var responseList = await Client.CustomerSubscriptions.GetAsync(sucessCreateResponse.Id).ConfigureAwait(false);
