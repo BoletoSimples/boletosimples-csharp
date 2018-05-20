@@ -26,11 +26,12 @@ namespace BoletoSimplesApiClient.Common
 
         public HttpClientRequestBuilder(BoletoSimplesClient client) : this(client, null, null, null, new Dictionary<string, string>()) { }
 
-        private HttpClientRequestBuilder(BoletoSimplesClient client,
-                                         Uri resorceUri,
-                                         HttpMethod method,
-                                         HttpContent content,
-                                         Dictionary<string, string> additionalHeaders)
+        private HttpClientRequestBuilder(
+            BoletoSimplesClient client,
+            Uri resorceUri,
+            HttpMethod method,
+            HttpContent content,
+            Dictionary<string, string> additionalHeaders)
         {
             _client = client;
             _uri = resorceUri;
@@ -75,7 +76,9 @@ namespace BoletoSimplesApiClient.Common
             var rootNameValue = JsonRootAttribute.GetAttributeValue(content.GetType());
 
             if (!string.IsNullOrEmpty(rootNameValue))
+            {
                 jsonContent = $"{{\"{rootNameValue}\": {jsonContent}}}";
+            }   
 
             var stringContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
@@ -124,9 +127,10 @@ namespace BoletoSimplesApiClient.Common
             }
 
             var baseUrl = baseUri.AbsoluteUri;
-            var concatenatedUrls = resourcePath.First() == '/' || baseUrl.Last() == '/' ?
-                                                $"{baseUrl}{resourcePath}" :
-                                                $"{baseUrl}/{resourcePath}";
+            var concatenatedUrls = resourcePath.First() == '/' || baseUrl.Last() == '/' 
+                ? $"{baseUrl}{resourcePath}" 
+                : $"{baseUrl}/{resourcePath}";
+
             return new Uri(concatenatedUrls);
         }
 

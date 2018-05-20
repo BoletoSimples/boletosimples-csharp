@@ -41,7 +41,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             });
 
             // Other Asserts
-            firstBankBilletAccount.ShouldBeEquivalentTo(secondBankBilletAccount);
+            firstBankBilletAccount.Should().BeEquivalentTo(secondBankBilletAccount);
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             });
 
             // Other Asserts
-            firstBankBillets.ShouldBeEquivalentTo(secondBankBillets);
+            firstBankBillets.Should().BeEquivalentTo(secondBankBillets);
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             });
 
             // Other Asserts
-            firstDischarge.ShouldBeEquivalentTo(secondDischarge);
+            firstDischarge.Should().BeEquivalentTo(secondDischarge);
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             });
 
             // Other Asserts
-            firstRemittance.ShouldBeEquivalentTo(secondRemittance);
+            firstRemittance.Should().BeEquivalentTo(secondRemittance);
         }
 
         [Test]
@@ -117,7 +117,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             });
 
             // Other Asserts
-            firstInstallment.ShouldBeEquivalentTo(secondInstallment);
+            firstInstallment.Should().BeEquivalentTo(secondInstallment);
         }
 
 
@@ -142,7 +142,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             });
 
             // Other Asserts
-            firstCustomerSubscription.ShouldBeEquivalentTo(secondCustomerSubscription);
+            firstCustomerSubscription.Should().BeEquivalentTo(secondCustomerSubscription);
         }
 
         [Test]
@@ -166,7 +166,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             });
 
             // Other Asserts
-            firstEventData.ShouldBeEquivalentTo(secondEventData);
+            firstEventData.Should().BeEquivalentTo(secondEventData);
         }
 
         [Test]
@@ -190,7 +190,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
             });
 
             // Other Asserts
-            firstCustomer.ShouldBeEquivalentTo(secondCustomer);
+            firstCustomer.Should().BeEquivalentTo(secondCustomer);
         }
     }
 }

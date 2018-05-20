@@ -24,7 +24,7 @@ namespace BoletoSimplesApiClient.UnitTests.Json
 
             // Assert
             expectedItems.Should().BeEquivalentTo(deserializedJson);
-            expectedSerializedJson.ShouldBeEquivalentTo(serializedJson);
+            expectedSerializedJson.Should().BeEquivalentTo(serializedJson);
         }
     }
 }

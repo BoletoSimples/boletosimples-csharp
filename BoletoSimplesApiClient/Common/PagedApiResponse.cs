@@ -28,7 +28,9 @@ namespace BoletoSimplesApiClient.Common
             StatusCode = _apiResponse.StatusCode;
 
             if (!IsSuccess)
+            {
                 ErrorResponse = response;
+            }
         }
 
         /// <summary>
@@ -46,11 +48,12 @@ namespace BoletoSimplesApiClient.Common
                 items = await _apiResponse.GetSuccessResponseAsync().ConfigureAwait(false);
             }
 
-            return new Paged<TSuccessResponse>(pagingValues.Total,
-                                        pagingValues.TotalPages,
-                                        pagingValues.CurrentPage,
-                                        pagingValues.MaxPageSize,
-                                        items);
+            return new Paged<TSuccessResponse>(
+                pagingValues.Total,
+                pagingValues.TotalPages,
+                pagingValues.CurrentPage,
+                pagingValues.MaxPageSize,
+                items);
         }
     }
 }

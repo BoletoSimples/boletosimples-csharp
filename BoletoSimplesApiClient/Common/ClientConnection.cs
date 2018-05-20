@@ -16,13 +16,14 @@ namespace BoletoSimplesApiClient.Common
         public readonly string ClientId;
         public readonly string ClientSecret;
 
-        public ClientConnection() : this(ConfigurationManager.AppSettings["boletosimple-api-url"],
-                                         ConfigurationManager.AppSettings["boletosimple-api-version"],
-                                         ConfigurationManager.AppSettings["boletosimple-api-token"],
-                                         ConfigurationManager.AppSettings["boletosimple-useragent"],
-                                         ConfigurationManager.AppSettings["boletosimple-api-return-url"],
-                                         ConfigurationManager.AppSettings["boletosimple-api-client-id"],
-                                         ConfigurationManager.AppSettings["boletosimple-api-client-secret"])
+        public ClientConnection() : this(
+            ConfigurationManager.AppSettings["boletosimple-api-url"],
+            ConfigurationManager.AppSettings["boletosimple-api-version"],
+            ConfigurationManager.AppSettings["boletosimple-api-token"],
+            ConfigurationManager.AppSettings["boletosimple-useragent"],
+            ConfigurationManager.AppSettings["boletosimple-api-return-url"],
+            ConfigurationManager.AppSettings["boletosimple-api-client-id"],
+            ConfigurationManager.AppSettings["boletosimple-api-client-secret"])
         { }
 
         public ClientConnection(string apiUrl, string apiVersion, string apiToken, string userAgent, string apiReturnUrl, string clientId, string clientSecret)

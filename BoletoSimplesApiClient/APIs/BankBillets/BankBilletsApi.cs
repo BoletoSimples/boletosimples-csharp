@@ -32,10 +32,11 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billets/#criar-boleto"/>
         public async Task<ApiResponse<BankBillet>> PostAsync(BankBillet bankBillet)
         {
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), BANK_BILLET_API)
-                                         .WithMethod(HttpMethod.Post)
-                                         .AndOptionalContent(bankBillet)
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), BANK_BILLET_API)
+                .WithMethod(HttpMethod.Post)
+                .AndOptionalContent(bankBillet)
+                .Build();
 
             return await _client.SendAsync<BankBillet>(request);
         }
@@ -48,9 +49,10 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billets/#informaes-do-boleto"/>
         public async Task<ApiResponse<BankBillet>> GetAsync(int id)
         {
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/{id}")
-                                         .WithMethod(HttpMethod.Get)
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/{id}")
+                .WithMethod(HttpMethod.Get)
+                .Build();
 
             return await _client.SendAsync<BankBillet>(request);
         }
@@ -66,17 +68,19 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         public async Task<PagedApiResponse<BankBillet>> GetAsync(int pageNumber, int maxPerPage = 250)
         {
             if (maxPerPage > 250)
+            {
                 throw new ArgumentException("o valor máximo para o argumento maxPerPage é 250");
+            }
 
-
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), BANK_BILLET_API)
-                                         .WithMethod(HttpMethod.Get)
-                                         .AppendQuery(new Dictionary<string, string>
-                                         {
-                                             ["page"] = pageNumber.ToString(),
-                                             ["per_page"] = maxPerPage.ToString()
-                                         })
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), BANK_BILLET_API)
+                .WithMethod(HttpMethod.Get)
+                .AppendQuery(new Dictionary<string, string>
+                {
+                    ["page"] = pageNumber.ToString(),
+                    ["per_page"] = maxPerPage.ToString()
+                })
+                .Build();
 
             return await _client.SendPagedAsync<BankBillet>(request);
         }
@@ -90,9 +94,10 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billets/#cancelar-boleto"/>
         public async Task<HttpResponseMessage> CancelAsync(int id)
         {
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/{id}/cancel")
-                                         .WithMethod(HttpMethod.Put)
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/{id}/cancel")
+                .WithMethod(HttpMethod.Put)
+                .Build();
 
             return await _client.SendAsync(request);
         }
@@ -107,10 +112,11 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         /// <see cref="http://api.boletosimples.com.br/reference/v1/bank_billets/#gerar-segunda-via-do-boleto"/>
         public async Task<ApiResponse<BankBillet>> DuplicateAsync(int id, Duplicate requestMessage)
         {
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/{id}/duplicate")
-                                         .WithMethod(HttpMethod.Post)
-                                         .AndOptionalContent(requestMessage)
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/{id}/duplicate")
+                .WithMethod(HttpMethod.Post)
+                .AndOptionalContent(requestMessage)
+                .Build();
 
             return await _client.SendAsync<BankBillet>(request);
         }
@@ -128,18 +134,20 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         public async Task<PagedApiResponse<BankBillet>> GetByCpfOrCnpjAsync(string cpfOrCnpj, int pageNumber, int maxPerPage = 250)
         {
             if (maxPerPage > 250)
+            {
                 throw new ArgumentException("o valor máximo para o argumento maxPerPage é 250");
+            } 
 
-
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/cnpj_cpf")
-                                         .WithMethod(HttpMethod.Get)
-                                         .AppendQuery(new Dictionary<string, string>
-                                         {
-                                             ["q"] = cpfOrCnpj,
-                                             ["page"] = pageNumber.ToString(),
-                                             ["per_page"] = maxPerPage.ToString()
-                                         })
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/cnpj_cpf")
+                .WithMethod(HttpMethod.Get)
+                .AppendQuery(new Dictionary<string, string>
+                {
+                    ["q"] = cpfOrCnpj,
+                    ["page"] = pageNumber.ToString(),
+                    ["per_page"] = maxPerPage.ToString()
+                })
+                .Build();
 
             return await _client.SendPagedAsync<BankBillet>(request);
         }
@@ -156,18 +164,20 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         public async Task<PagedApiResponse<BankBillet>> GetByOurNumberAsync(string ourNumber, int pageNumber, int maxPerPage = 250)
         {
             if (maxPerPage > 250)
+            {
                 throw new ArgumentException("o valor máximo para o argumento maxPerPage é 250");
+            }
 
-
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/our_number")
-                                         .WithMethod(HttpMethod.Get)
-                                         .AppendQuery(new Dictionary<string, string>
-                                         {
-                                             ["q"] = ourNumber,
-                                             ["page"] = pageNumber.ToString(),
-                                             ["per_page"] = maxPerPage.ToString()
-                                         })
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/our_number")
+                .WithMethod(HttpMethod.Get)
+                .AppendQuery(new Dictionary<string, string>
+                {
+                    ["q"] = ourNumber,
+                    ["page"] = pageNumber.ToString(),
+                    ["per_page"] = maxPerPage.ToString()
+                })
+                .Build();
 
             return await _client.SendPagedAsync<BankBillet>(request);
         }
@@ -184,18 +194,20 @@ namespace BoletoSimplesApiClient.APIs.BankBillets
         public async Task<PagedApiResponse<BankBillet>> GetByStatusAsync(string status, int pageNumber, int maxPerPage = 250)
         {
             if (maxPerPage > 250)
+            {
                 throw new ArgumentException("o valor máximo para o argumento maxPerPage é 250");
+            }
 
-
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/status")
-                                         .WithMethod(HttpMethod.Get)
-                                         .AppendQuery(new Dictionary<string, string>
-                                         {
-                                             ["q"] = status,
-                                             ["page"] = pageNumber.ToString(),
-                                             ["per_page"] = maxPerPage.ToString()
-                                         })
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), $"{BANK_BILLET_API}/status")
+                .WithMethod(HttpMethod.Get)
+                .AppendQuery(new Dictionary<string, string>
+                {
+                    ["q"] = status,
+                    ["page"] = pageNumber.ToString(),
+                    ["per_page"] = maxPerPage.ToString()
+                })
+                .Build();
 
             return await _client.SendPagedAsync<BankBillet>(request);
         }
