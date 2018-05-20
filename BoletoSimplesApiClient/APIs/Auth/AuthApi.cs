@@ -39,9 +39,10 @@ namespace BoletoSimplesApiClient.APIs.Auth
         /// <see cref="http://api.boletosimples.com.br/authentication/token/"/>
         public async Task<ApiResponse<UserInfo>> GetUserInfoAsync()
         {
-            var request = _requestBuilder.To(_client.Connection.GetBaseUri(), "/userinfo")
-                                         .WithMethod(HttpMethod.Get)
-                                         .Build();
+            var request = _requestBuilder.To(
+                _client.Connection.GetBaseUri(), "/userinfo")
+                .WithMethod(HttpMethod.Get)
+                .Build();
 
             return await _client.SendAsync<UserInfo>(request);
         }

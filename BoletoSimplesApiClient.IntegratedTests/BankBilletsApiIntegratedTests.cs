@@ -62,7 +62,7 @@ namespace BoletoSimplesApiClient.IntegratedTests
             // Assert
             Assert.That(response.IsSuccess, Is.True);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-            successCreateResponse.ShouldBeEquivalentTo(successResponse);
+            successCreateResponse.Should().BeEquivalentTo(successResponse);
         }
 
         [Test]
